@@ -31,6 +31,8 @@
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Models\Tile.cpp" />
+    <ClCompile Include="src\Models\Structure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -297,6 +299,8 @@
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h">
       <Filter>addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</Filter>
     </ClInclude>
+    <ClInclude Include="src\Models\Tile.h" />
+    <ClInclude Include="src\Models\Structure.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

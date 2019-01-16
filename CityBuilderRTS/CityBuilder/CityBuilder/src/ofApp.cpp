@@ -25,6 +25,19 @@ void ofApp::setup() {
 	cam.setCamYUpperBound(1500);
 	cam.setCamYLowerBound(300);
 	cam.setPosition(0, 400, 0);
+
+
+
+	// tile stuff
+	float size = 200;
+	for (int i1 = 0; i1 < 10; ++i1)
+	{
+		for (int i2 = 0; i2 < 10; ++i2)
+		{
+			int r = rand() % 2;
+			tiles.push_back(Tile(ofVec3f(i1 * size, 0, i2 * size), (Tile::BaseType)r, size));
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -37,8 +50,12 @@ void ofApp::draw(){
 	ofEnableDepthTest();
 	cam.begin();	
 	light.enable();
-	testModel.drawFaces();
-	testModel2.drawFaces();
+	//testModel.drawFaces();
+	//testModel2.drawFaces();
+	for (auto tile : tiles)
+	{
+		tile.getBaseModel()->drawFaces();
+	}
 	cam.end();
 	light.disable();
 	ofDisableDepthTest();

@@ -4,6 +4,8 @@
 
 // test 
 #include "ofxAssimpModelLoader.h"
+#include "Models/Tile.h"
+#include <vector>
 
 
 class ofApp : public ofBaseApp{
@@ -30,5 +32,6 @@ class ofApp : public ofBaseApp{
 		ofxAssimpModelLoader testModel2;
 		ofLight	light;
 		ofEasyCam cam;
+		std::vector<Tile> tiles;
 		
 };

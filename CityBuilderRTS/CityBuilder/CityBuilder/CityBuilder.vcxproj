@@ -228,6 +228,8 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp" />
+    <ClCompile Include="src\Models\Tile.cpp" />
+    <ClCompile Include="src\Models\Structure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ai_assert.h" />
@@ -302,6 +304,8 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
+    <ClInclude Include="src\Models\Tile.h" />
+    <ClInclude Include="src\Models\Structure.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
