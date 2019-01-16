@@ -19,6 +19,8 @@ void ofApp::setup() {
 	cam.setCamYLowerBound(300);
 	cam.setPosition(0, 400, 0);
 
+	mainUI.load("MainLayout.png");
+
 
 
 	// tile stuff
@@ -50,6 +52,11 @@ void ofApp::draw(){
 	cam.end();
 	light.disable();
 	ofDisableDepthTest();
+
+	ofSetColor(255);
+	mainUI.draw(0,ofGetWindowHeight()-mainUI.getHeight());
+
+
 }
 
 //--------------------------------------------------------------
@@ -94,7 +101,7 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+	mainUI.resize(w, w/4.92);
 }
 
 //--------------------------------------------------------------

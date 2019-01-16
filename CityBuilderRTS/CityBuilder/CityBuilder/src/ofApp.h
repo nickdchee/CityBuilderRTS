@@ -31,5 +31,6 @@ class ofApp : public ofBaseApp{
 		ofLight	light;
 		ofEasyCam cam;
 		std::vector<Tile> tiles;
+		ofImage mainUI;
 		
 };

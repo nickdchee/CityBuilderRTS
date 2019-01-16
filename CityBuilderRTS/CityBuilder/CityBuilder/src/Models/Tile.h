@@ -12,9 +12,6 @@ public:
 		FLATLAND, MOUNTAIN
 	};
 
-
-	std::shared_ptr<ofPlanePrimitive> boundingPlane = nullptr; // bounding plane for collisions
-
 	Tile(ofVec3f pos, BaseType type, float size = 200);
 	~Tile() = default;
 
@@ -28,7 +25,6 @@ private:
 	// base model (flatland, mountain, etc)
 	// removed when a structure is built, added when a structure is destroyed
 	std::shared_ptr<ofxAssimpModelLoader> baseModel;
-	
+	std::shared_ptr<ofPlanePrimitive> boundingPlane = nullptr; // bounding plane for collisions
 	std::shared_ptr<Structure> structure = nullptr; // if this is nullptr, then it is not occupied
 };
-
