@@ -100,19 +100,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
-..\..\..\addons\ofxDatGui\src;
-..\..\..\addons\ofxDatGui\src\components;
-..\..\..\addons\ofxDatGui\src\core;
-..\..\..\addons\ofxDatGui\src\libs;
-..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
-..\..\..\addons\ofxDatGui\src\themes;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -135,12 +129,13 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -149,7 +144,9 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%3b
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;%(AdditionalDependencies)</AdditionalDependencies>
+C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -159,19 +156,13 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
-..\..\..\addons\ofxDatGui\src;
-..\..\..\addons\ofxDatGui\src\components;
-..\..\..\addons\ofxDatGui\src\core;
-..\..\..\addons\ofxDatGui\src\libs;
-..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
-..\..\..\addons\ofxDatGui\src\themes;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -186,7 +177,9 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%3b
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll;%(AdditionalDependencies)</AdditionalDependencies>
+C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -196,19 +189,13 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
-..\..\..\addons\ofxDatGui\src;
-..\..\..\addons\ofxDatGui\src\components;
-..\..\..\addons\ofxDatGui\src\core;
-..\..\..\addons\ofxDatGui\src\libs;
-..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
-..\..\..\addons\ofxDatGui\src\themes;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -221,8 +208,10 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%3b
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;%(AdditionalDependencies)</AdditionalDependencies>
+C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
+C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
