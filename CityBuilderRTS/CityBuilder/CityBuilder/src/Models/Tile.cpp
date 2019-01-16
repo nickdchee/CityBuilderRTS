@@ -2,9 +2,10 @@
 
 Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size)
 {
-	//boundingPlane = std::make_shared<ofPlanePrimitive>(new ofPlanePrimitive());
-	//boundingPlane->set(size, size);
-	//boundingPlane->setPosition(position);
+	boundingPlane = std::shared_ptr<ofPlanePrimitive>(new ofPlanePrimitive());
+	boundingPlane->set(size, size);
+	boundingPlane->setPosition(position);
+	boundingPlane->rotate(90, boundingPlane->getXAxis());
 
 
 	baseModel = std::shared_ptr<ofxAssimpModelLoader>(new ofxAssimpModelLoader());

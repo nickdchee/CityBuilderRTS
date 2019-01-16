@@ -6,13 +6,6 @@ void ofApp::setup() {
 	// test
 	ofBackground(255, 255, 255);
 	ofSetVerticalSync(true);
-	testModel.loadModel("Factory.fbx");
-	testModel.setScaleNormalization(false);
-	testModel.setRotation(0, 180, 1, 0, 0);
-	testModel2.loadModel("Factory.fbx", 20);
-	testModel2.setScaleNormalization(false);
-	testModel2.setRotation(0, 180, 1, 0, 0);
-	testModel2.setPosition(200, 0, 0);
 	light.setPosition(0, 0, 500);
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
@@ -50,8 +43,6 @@ void ofApp::draw(){
 	ofEnableDepthTest();
 	cam.begin();	
 	light.enable();
-	//testModel.drawFaces();
-	//testModel2.drawFaces();
 	for (auto tile : tiles)
 	{
 		tile.getBaseModel()->drawFaces();
@@ -73,7 +64,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+	
 }
 
 //--------------------------------------------------------------

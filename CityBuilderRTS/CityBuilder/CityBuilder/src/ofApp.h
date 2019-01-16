@@ -28,8 +28,6 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		// test stuff
-		ofxAssimpModelLoader testModel;
-		ofxAssimpModelLoader testModel2;
 		ofLight	light;
 		ofEasyCam cam;
 		std::vector<Tile> tiles;
