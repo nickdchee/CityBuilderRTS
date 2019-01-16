@@ -9,6 +9,9 @@ openFrameworksUniversal.a
 libs/openFrameworksCompiled/lib/*/*
 !libs/openFrameworksCompiled/lib/*/.gitkeep
 
+# vs
+
+
 # apothecary
 scripts/apothecary/build
 
@@ -60,6 +63,7 @@ xcuserdata
 
 # Visual Studio
 .vs/
+*.exe
 *.sdf
 *.opensdf
 *.suo

@@ -100,7 +100,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
+..\..\..\addons\ofxDatGui\src;
+..\..\..\addons\ofxDatGui\src\components;
+..\..\..\addons\ofxDatGui\src\core;
+..\..\..\addons\ofxDatGui\src\libs;
+..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
+..\..\..\addons\ofxDatGui\src\themes;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
@@ -129,8 +135,7 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
+      <AdditionalIncludeDirectories>C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
@@ -154,7 +159,13 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
+..\..\..\addons\ofxDatGui\src;
+..\..\..\addons\ofxDatGui\src\components;
+..\..\..\addons\ofxDatGui\src\core;
+..\..\..\addons\ofxDatGui\src\libs;
+..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
+..\..\..\addons\ofxDatGui\src\themes;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
@@ -185,7 +196,13 @@ C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\l
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
+..\..\..\addons\ofxDatGui\src;
+..\..\..\addons\ofxDatGui\src\components;
+..\..\..\addons\ofxDatGui\src\core;
+..\..\..\addons\ofxDatGui\src\libs;
+..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
+..\..\..\addons\ofxDatGui\src\themes;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
