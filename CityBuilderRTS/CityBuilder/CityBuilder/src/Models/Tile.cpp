@@ -2,11 +2,15 @@
 
 Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size)
 {
-	boundingPlane = std::shared_ptr<ofPlanePrimitive>(new ofPlanePrimitive());
-	boundingPlane->set(size, size);
-	boundingPlane->setPosition(position);
-	boundingPlane->rotate(90, boundingPlane->getXAxis());
+	boundingPlane = std::shared_ptr<IsPlane>(new IsPlane());
+	boundingPlane->set(position, 
+		ofPoint(position.x + size, position.y, position.z), 
+		ofPoint(position.x, position.y, position.z + size));
 
+	boundingTriangle = std::shared_ptr<IsTriangle>(new IsTriangle());
+	boundingTriangle->set(position,
+		ofPoint(position.x + size, position.y, position.z),
+		ofPoint(position.x, position.y, position.z + size));
 
 	baseModel = std::shared_ptr<ofxAssimpModelLoader>(new ofxAssimpModelLoader());
 	switch (type)

@@ -6,7 +6,7 @@ void ofApp::setup() {
 	// test
 	ofBackground(255, 255, 255);
 	ofSetVerticalSync(true);
-	light.setPosition(0, 0, 500);
+	light.setPosition(0, 100, 500);
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
@@ -19,8 +19,10 @@ void ofApp::setup() {
 	cam.setCamYLowerBound(300);
 	cam.setPosition(0, 400, 0);
 
-	mainUI.load("MainLayout.png");
+	cam.setVFlip(false);
+	ofEnableAlphaBlending();
 
+	mainUI.load("MainLayout.png");
 
 
 	// tile stuff
@@ -42,13 +44,32 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	IntersectionData id;
+	ofxIntersection is;
+	IsRay ray;
+	ofPoint mouse(ofGetMouseX(), ofGetMouseY());
+	ray.set(cam.screenToWorld(mouse), cam.getZAxis());
+
 	ofEnableDepthTest();
 	cam.begin();	
 	light.enable();
+
 	for (auto tile : tiles)
 	{
+		auto t = tile.boundingTriangle;
+		ofSetColor(150);
 		tile.getBaseModel()->drawFaces();
+		ofSetColor(0, 255, 0);
+		ray.draw();
+		ofSetColor(0, 0, 150, 50);
+		t->draw();
+		id = is.RayTriangleIntersection(*t, ray);
+		if (id.isIntersection) {
+			ofSetColor(255, 0, 0);
+			ofDrawSphere(id.pos, 10);
+		}
 	}
+
 	cam.end();
 	light.disable();
 	ofDisableDepthTest();

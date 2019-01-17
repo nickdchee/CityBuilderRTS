@@ -3,6 +3,7 @@
 #include "Structure.h"
 #include <memory>
 #include "ofxAssimpModelLoader.h"
+#include "ofxIntersection.h"
 
 class Tile
 {
@@ -17,6 +18,11 @@ public:
 
 	std::shared_ptr<ofxAssimpModelLoader> getBaseModel();
 
+
+	std::shared_ptr<IsPlane> boundingPlane = nullptr; // bounding plane for collisions
+
+	std::shared_ptr<IsTriangle> boundingTriangle = nullptr; // bounding plane for collisions
+
 private:
 	ofVec3f position; // position of the tile
 	float size; // size/width of the tile (n x n)
@@ -25,6 +31,5 @@ private:
 	// base model (flatland, mountain, etc)
 	// removed when a structure is built, added when a structure is destroyed
 	std::shared_ptr<ofxAssimpModelLoader> baseModel;
-	std::shared_ptr<ofPlanePrimitive> boundingPlane = nullptr; // bounding plane for collisions
 	std::shared_ptr<Structure> structure = nullptr; // if this is nullptr, then it is not occupied
 };

@@ -33,6 +33,9 @@
     </ClCompile>
     <ClCompile Include="src\Models\Tile.cpp" />
     <ClCompile Include="src\Models\Structure.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.cpp">
+      <Filter>addons\ofxIntersection\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -88,6 +91,12 @@
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI">
       <UniqueIdentifier>{ed65445f-a5bc-4348-ae94-9bbe0602228c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxIntersection">
+      <UniqueIdentifier>{9c12e026-b57a-4b48-9604-73a7cd1f728d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxIntersection\src">
+      <UniqueIdentifier>{c75ab0b7-4fbb-4aca-8cb5-70bd06d0ae83}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="src\Models\Tile.h" />
     <ClInclude Include="src\Models\Structure.h" />
+    <ClInclude Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.h">
+      <Filter>addons\ofxIntersection\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
