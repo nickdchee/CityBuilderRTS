@@ -1,1 +1,3 @@
+ofxAssimpModelLoader
 ofxDatGui
+ofxIntersection

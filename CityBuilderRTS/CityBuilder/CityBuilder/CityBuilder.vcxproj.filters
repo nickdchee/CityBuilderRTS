@@ -19,6 +19,10 @@
     <ClCompile Include="src\CommandPattern\Command.cpp" />
     <ClCompile Include="src\CommandPattern\CommandManager.cpp" />
     <ClCompile Include="src\CommandPattern\UndoableCommand.cpp" />
+    <ClCompile Include="src\Models\Tile.cpp" />
+    <ClCompile Include="src\Models\Structure.cpp" />
+    <ClCompile Include="src\UI\UIManager.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
@@ -31,13 +35,9 @@
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Models\Tile.cpp" />
-    <ClCompile Include="src\Models\Structure.cpp" />
     <ClCompile Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.cpp">
       <Filter>addons\ofxIntersection\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\UIManager.cpp" />
-    <ClCompile Include="src\UI\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -68,37 +68,37 @@
       <UniqueIdentifier>{2646318C-49AB-44C5-70D8-23E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader">
-      <UniqueIdentifier>{7761d976-c571-4a07-9a57-4296c7b4a680}</UniqueIdentifier>
+      <UniqueIdentifier>{57922c9d-2d21-4ef8-a544-bee39fd8c478}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\src">
-      <UniqueIdentifier>{1a1a7415-5934-42b2-84bd-8921650071b8}</UniqueIdentifier>
+      <UniqueIdentifier>{100d2e68-0697-4acd-ae0f-8e28e5f5aace}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs">
-      <UniqueIdentifier>{5e50b50b-6d48-4772-a668-074405adcca6}</UniqueIdentifier>
+      <UniqueIdentifier>{a689fadb-47dc-45e8-aef3-fc48e4b33ed6}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp">
-      <UniqueIdentifier>{b7459a9e-1ce0-4aef-b0c0-2f3e7d45f215}</UniqueIdentifier>
+      <UniqueIdentifier>{c9cec764-d7ec-4baa-b6db-c737f37169e0}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include">
-      <UniqueIdentifier>{8e33e27a-e8a7-442b-9ccb-dfdc16eb105d}</UniqueIdentifier>
+      <UniqueIdentifier>{8ed093b5-4efc-4465-a685-833bd9ac89e2}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp">
-      <UniqueIdentifier>{d218f054-ee3d-41f4-bc86-4f441c551ebe}</UniqueIdentifier>
+      <UniqueIdentifier>{d6b6ed1b-2034-44f5-b410-a11240090a62}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler">
-      <UniqueIdentifier>{f7e65d19-ca03-4ce9-adeb-94760202dfce}</UniqueIdentifier>
+      <UniqueIdentifier>{ea765c3c-6313-4275-a1eb-7f5dfd9863d3}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port">
-      <UniqueIdentifier>{92c462f4-8aeb-4f95-a584-ff3ff7779442}</UniqueIdentifier>
+      <UniqueIdentifier>{42cea28c-3938-4098-8566-5b1e72c7eeae}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI">
-      <UniqueIdentifier>{ed65445f-a5bc-4348-ae94-9bbe0602228c}</UniqueIdentifier>
+      <UniqueIdentifier>{1689e88e-eaf2-4008-b69f-4b74c6411100}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection">
-      <UniqueIdentifier>{da54d356-a792-48e5-a6e2-5651ce06eba5}</UniqueIdentifier>
+      <UniqueIdentifier>{f9fb93f8-9b60-48c2-9f11-01b03e7269c5}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection\src">
-      <UniqueIdentifier>{61a757b7-9038-4e3d-bcf1-d68a3fb582a8}</UniqueIdentifier>
+      <UniqueIdentifier>{65d4bcf7-83a1-4899-a0fc-7def1c722a9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +172,10 @@
     <ClInclude Include="src\CommandPattern\CommandManager.h" />
     <ClInclude Include="src\CommandPattern\UndoableCommand.h" />
     <ClInclude Include="src\ObserverPattern\Observer.h" />
+    <ClInclude Include="src\Models\Tile.h" />
+    <ClInclude Include="src\Models\Structure.h" />
+    <ClInclude Include="src\UI\UIManager.h" />
+    <ClInclude Include="src\UI\Button.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClInclude>
@@ -310,13 +314,9 @@
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h">
       <Filter>addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</Filter>
     </ClInclude>
-    <ClInclude Include="src\Models\Tile.h" />
-    <ClInclude Include="src\Models\Structure.h" />
     <ClInclude Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.h">
       <Filter>addons\ofxIntersection\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\UIManager.h" />
-    <ClInclude Include="src\UI\Button.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

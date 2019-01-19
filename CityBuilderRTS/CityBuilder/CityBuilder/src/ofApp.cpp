@@ -18,6 +18,7 @@ void ofApp::setup() {
 	cam.setCamYUpperBound(-1);
 	cam.setCamYLowerBound(-1);
 	cam.setPosition(0, 400, 0);
+	cam.setNearClip(0.1f);
 
 	cam.setVFlip(false);
 	ofEnableAlphaBlending();
