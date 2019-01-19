@@ -1,3 +1,0 @@
-ofxAssimpModelLoader
-ofxDatGui
-ofxIntersection
