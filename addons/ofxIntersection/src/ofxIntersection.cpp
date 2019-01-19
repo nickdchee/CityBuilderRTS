@@ -43,7 +43,6 @@ IntersectionData ofxIntersection::RayFinitePlaneIntersection(IsRay&ray, IsFinite
 	{
 		return idatat2;
 	}
-
 }
 
 IntersectionData ofxIntersection::RayTriangleIntersection(IsTriangle& triangle, IsRay& ray){
