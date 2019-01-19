@@ -11,8 +11,6 @@
 #include "ofMain.h"
 #define EPS 1.0E-10
 
-
-
 class IntersectionData{
 public:
     IntersectionData(){
@@ -119,38 +117,6 @@ public:
         return IsLine(getPointAtDistance(-length/2), getPointAtDistance(length/2));
     }
     
-};
-
-class IsFinitePlane
-{
-public:
-	IsFinitePlane()
-	{
-		p0.set(0, 0, 0);
-		p1.set(1, 0, 0);
-		p2.set(1, 0, 1);
-		p3.set(0, 0, 1);
-		normal.set(0, 1, 0);
-		t1.set(p0, p1, p2);
-		t2.set(p0, p2, p3);
-	}
-	IsFinitePlane(ofPoint _p0, ofPoint _p1, ofPoint _p2, ofPoint _p3)
-		: p0(_p0), p1(_p1), p2(_p2), p3(_p3)
-	{
-		normal.set((p1 - p0).cross(p2 - p0));
-		t1.set(p0, p1, p2);
-		t2.set(p0, p2, p3);
-	}
-	void draw()
-	{
-		t1.draw();
-		t2.draw();
-	}
-private:
-	ofPoint p0, p1, p2, p3;
-	ofVec3f normal;
-	IsTriangle t1, t2;
-	float size;
 };
 
 class IsPlane{
@@ -317,6 +283,70 @@ private:
     
 };
 
+class IsFinitePlane
+{
+public:
+	IsFinitePlane()
+	{
+		p0.set(0, 0, 0);
+		p1.set(1, 0, 0);
+		p2.set(1, 0, 1);
+		p3.set(0, 0, 1);
+		normal.set(0, 1, 0);
+		t1.set(p0, p1, p2);
+		t2.set(p0, p2, p3);
+	}
+	/*
+	p0------p3
+	| \     |
+	|   \   |
+	|     \ |
+	p1------p2
+	*/
+	IsFinitePlane(ofPoint _p0, ofPoint _p1, ofPoint _p2, ofPoint _p3)
+		: p0(_p0), p1(_p1), p2(_p2), p3(_p3)
+	{
+		normal.set((p1 - p0).cross(p2 - p0));
+		t1.set(p0, p1, p2);
+		t2.set(p0, p2, p3);
+	}
+	void set(ofPoint _p0, ofPoint _p1, ofPoint _p2, ofPoint _p3)
+	{
+		p0 = _p0; p1 = _p1; p2 = _p2; p3 = _p3;
+		normal.set((p1 - p0).cross(p2 - p0));
+		t1.set(p0, p1, p2);
+		t2.set(p0, p2, p3);
+	}
+	void set(ofPoint _center, float width)
+	{
+		p0 = ofPoint(_center.x - (width / 2), _center.y, _center.z - (width / 2));
+		p1 = ofPoint(_center.x - (width / 2), _center.y, _center.z + (width / 2));
+		p2 = ofPoint(_center.x + (width / 2), _center.y, _center.z + (width / 2));
+		p3 = ofPoint(_center.x + (width / 2), _center.y, _center.z - (width / 2));
+		normal.set((p1 - p0).cross(p2 - p0));
+		t1.set(p0, p1, p2);
+		t2.set(p0, p2, p3);
+	}
+	void draw()
+	{
+		t1.draw();
+		t2.draw();
+	}
+
+	IsTriangle getT1()
+	{
+		return t1;
+	}
+	IsTriangle getT2()
+	{
+		return t2;
+	}
+private:
+	ofPoint p0, p1, p2, p3;
+	ofVec3f normal;
+	IsTriangle t1, t2;
+	float size;
+};
 
 class IsRectangle{
 

@@ -33,21 +33,15 @@ IntersectionData ofxIntersection::RayPlaneIntersection(IsRay&ray, IsPlane &plane
 }
 
 IntersectionData ofxIntersection::RayFinitePlaneIntersection(IsRay&ray, IsFinitePlane &plane) {
-	IntersectionData idata;
-
-	float u = 0;
-	float denom = plane.getNormal().dot(ray.getVec());
-
-	// check if ray is paralles to plane:
-	if (fabs(denom) > EPS) {
-		u = plane.getNormal().dot(plane.getP0() - ray.getP0()) / denom;
-		idata.isIntersection = true;
-		idata.pos.set(ray.getP0() + ray.getVec()*u);
-		return idata;
+	IntersectionData idatat1 = RayTriangleIntersection(plane.getT1(), ray);
+	IntersectionData idatat2 = RayTriangleIntersection(plane.getT2(), ray);
+	if (idatat1.isIntersection)
+	{
+		return idatat1;
 	}
-	else {
-		idata.isIntersection = false;
-		return idata;
+	else
+	{
+		return idatat2;
 	}
 
 }

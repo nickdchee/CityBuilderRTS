@@ -93,10 +93,10 @@
       <UniqueIdentifier>{ed65445f-a5bc-4348-ae94-9bbe0602228c}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection">
-      <UniqueIdentifier>{9c12e026-b57a-4b48-9604-73a7cd1f728d}</UniqueIdentifier>
+      <UniqueIdentifier>{da54d356-a792-48e5-a6e2-5651ce06eba5}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection\src">
-      <UniqueIdentifier>{c75ab0b7-4fbb-4aca-8cb5-70bd06d0ae83}</UniqueIdentifier>
+      <UniqueIdentifier>{61a757b7-9038-4e3d-bcf1-d68a3fb582a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

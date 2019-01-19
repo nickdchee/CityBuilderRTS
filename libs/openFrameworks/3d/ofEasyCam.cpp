@@ -41,6 +41,7 @@ void ofEasyCam::update(ofEventArgs & args){
 		if (currentTransformType == TRANSFORM_ROTATE) {
 			updateRotation();
 		}else if (currentTransformType == TRANSFORM_TRANSLATE_XY ||
+				  currentTransformType == TRANSFORM_TRANSLATE_XY_35 ||
 				  currentTransformType == TRANSFORM_TRANSLATE_Z  ||
 				  currentTransformType == TRANSFORM_SCALE) {
 			updateTranslation();
@@ -288,6 +289,7 @@ void ofEasyCam::updateTranslation(){
 		move((getXAxis() * translate.x) + (getYAxis() * translate.y) + (getZAxis() * translate.z));
 	}
 	if(currentTransformType == TRANSFORM_TRANSLATE_XY ||
+	   currentTransformType == TRANSFORM_TRANSLATE_XY_35 ||
 	   currentTransformType == TRANSFORM_TRANSLATE_Z  ||
 	   currentTransformType == TRANSFORM_SCALE) {
 		if(getOrtho()){
@@ -420,8 +422,8 @@ void ofEasyCam::mouseScrolled(ofMouseEventArgs & mouse){
 		}
 		lastPressPosition = ofCamera::getGlobalPosition();
 		lastPressAxisZ = getZAxis();
-		if (camYLowerBound > 0 && getY() <= camYLowerBound && mouse.scrollY < 0) { return; }
-		if (camYUpperBound > 0 && getY() >= camYUpperBound && mouse.scrollY > 0) { return; }
+		if (camYLowerBound > 0 && getGlobalPosition().y <= camYLowerBound && mouse.scrollY < 0) { return; }
+		if (camYUpperBound > 0 && getGlobalPosition().y >= camYUpperBound && mouse.scrollY > 0) { return; }
 		if (getOrtho()) {
 			translate.z = sensitivityScroll * mouse.scrollY / viewport.height;
 			mouseAtScroll = mouse;
@@ -460,6 +462,27 @@ void ofEasyCam::updateMouse(const glm::vec2 & mouse){
 			}else{
 				translate.x = -mouseVel.x * sensitivityTranslate.x * 0.5f * (getDistance() + std::numeric_limits<float>::epsilon())/ area.width;
 				translate.y = vFlip * mouseVel.y * sensitivityTranslate.y* 0.5f * (getDistance() + std::numeric_limits<float>::epsilon())/ area.height;
+			}
+			break;
+		case TRANSFORM_TRANSLATE_XY_35:
+			mouseVel = mouse - prevMouse;
+			if (getOrtho()) {
+				ofVec2f v = ofVec2f(-mouseVel.x * getScale().z, 
+					vFlip * mouseVel.y * getScale().z);
+				ofVec3f pos1 = getGlobalPosition();
+				ofVec3f pos2 = ofVec3f(pos1.x + v.x, pos1.y, pos1.z + v.y);
+				setGlobalPosition(pos2);
+			}
+			else {
+				ofVec2f v = ofVec2f(-mouseVel.x * sensitivityTranslate.x * 0.5f * (getDistance() + std::numeric_limits<float>::epsilon()) / area.width,
+					vFlip * mouseVel.y * sensitivityTranslate.y* 0.5f * (getDistance() + std::numeric_limits<float>::epsilon()) / area.height);
+				float angle = 35;
+				float along_global_z = sinf(angle) * v.y;
+				float along_z = cosf(angle) * along_global_z;
+				float along_y = sinf(angle) * along_global_z;
+				translate.x = v.x;
+				translate.y = along_y;
+				translate.z = along_z;
 			}
 			break;
 		case TRANSFORM_TRANSLATE_Z:

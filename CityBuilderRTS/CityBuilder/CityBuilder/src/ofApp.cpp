@@ -10,13 +10,13 @@ void ofApp::setup() {
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
-	cam.addInteraction(ofEasyCam::TRANSFORM_TRANSLATE_XY, 0);
+	cam.addInteraction(ofEasyCam::TRANSFORM_TRANSLATE_XY_35, 0);
 	cam.disableDoubleClick();
 	cam.enableOrtho();
 	cam.setMouseScrollSensitivity(20.0f);
 	cam.setScale(0.3, 0.3, 0.3);
-	cam.setCamYUpperBound(1500);
-	cam.setCamYLowerBound(300);
+	cam.setCamYUpperBound(-1);
+	cam.setCamYLowerBound(-1);
 	cam.setPosition(0, 400, 0);
 
 	cam.setVFlip(false);
@@ -39,7 +39,7 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+	std::cout << cam.getGlobalPosition().y << std::endl;
 }
 
 //--------------------------------------------------------------
@@ -56,17 +56,15 @@ void ofApp::draw(){
 
 	for (auto tile : tiles)
 	{
-		auto t = tile.boundingTriangle;
 		ofSetColor(150);
 		tile.getBaseModel()->drawFaces();
-		ofSetColor(0, 255, 0);
-		ray.draw();
-		ofSetColor(0, 0, 150, 50);
-		t->draw();
-		id = is.RayTriangleIntersection(*t, ray);
+		auto t = tile.boundingPlane;
+		id = is.RayFinitePlaneIntersection(ray, *t);
 		if (id.isIntersection) {
 			ofSetColor(255, 0, 0);
-			ofDrawSphere(id.pos, 10);
+			t->draw();
+			//ofSetColor(0, 0, 255);
+			//ofDrawSphere(id.pos, 10);
 		}
 	}
 

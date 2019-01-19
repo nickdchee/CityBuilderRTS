@@ -19,9 +19,7 @@ public:
 	std::shared_ptr<ofxAssimpModelLoader> getBaseModel();
 
 
-	std::shared_ptr<IsPlane> boundingPlane = nullptr; // bounding plane for collisions
-
-	std::shared_ptr<IsTriangle> boundingTriangle = nullptr; // bounding plane for collisions
+	std::shared_ptr<IsFinitePlane> boundingPlane = nullptr; // bounding plane for collisions
 
 private:
 	ofVec3f position; // position of the tile
