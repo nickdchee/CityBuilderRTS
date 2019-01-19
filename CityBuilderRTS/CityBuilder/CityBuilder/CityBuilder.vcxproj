@@ -201,6 +201,7 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp" />
     <ClCompile Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
     <ClCompile Include="src\CommandPattern\Command.cpp" />
     <ClCompile Include="src\CommandPattern\CommandManager.cpp" />
     <ClCompile Include="src\CommandPattern\UndoableCommand.cpp" />
@@ -211,6 +212,7 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp" />
     <ClCompile Include="src\Models\Tile.cpp" />
     <ClCompile Include="src\Models\Structure.cpp" />
+    <ClCompile Include="src\UI\UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ai_assert.h" />
@@ -260,6 +262,7 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.h" />
+    <ClInclude Include="src\UI\Button.h" />
     <ClInclude Include="src\CommandPattern\Command.h" />
     <ClInclude Include="src\CommandPattern\CommandManager.h" />
     <ClInclude Include="src\CommandPattern\UndoableCommand.h" />
@@ -288,6 +291,7 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
     <ClInclude Include="src\Models\Tile.h" />
     <ClInclude Include="src\Models\Structure.h" />
+    <ClInclude Include="src\UI\UIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

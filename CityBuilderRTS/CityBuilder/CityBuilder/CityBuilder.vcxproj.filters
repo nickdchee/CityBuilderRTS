@@ -36,6 +36,8 @@
     <ClCompile Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.cpp">
       <Filter>addons\ofxIntersection\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\UIManager.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -313,6 +315,8 @@
     <ClInclude Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.h">
       <Filter>addons\ofxIntersection\src</Filter>
     </ClInclude>
+    <ClInclude Include="src\UI\UIManager.h" />
+    <ClInclude Include="src\UI\Button.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

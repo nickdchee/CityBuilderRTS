@@ -10,7 +10,7 @@ void ofApp::setup() {
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
-	cam.addInteraction(ofEasyCam::TRANSFORM_TRANSLATE_XY_35, 0);
+	cam.addInteraction(ofEasyCam::TRANSFORM_TRANSLATE_XY, 0);
 	cam.disableDoubleClick();
 	cam.enableOrtho();
 	cam.setMouseScrollSensitivity(20.0f);
@@ -63,8 +63,6 @@ void ofApp::draw(){
 		if (id.isIntersection) {
 			ofSetColor(255, 0, 0);
 			t->draw();
-			//ofSetColor(0, 0, 255);
-			//ofDrawSphere(id.pos, 10);
 		}
 	}
 
