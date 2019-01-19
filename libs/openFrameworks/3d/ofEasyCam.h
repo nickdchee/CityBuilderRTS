@@ -150,13 +150,6 @@ public:
 	void enableInertia();
 	void disableInertia();
 
-	// custom 
-	void disableDoubleClick();
-	void enableDoubleClick();
-	void setMouseScrollSensitivity(float);
-	void setCamYLowerBound(float);
-	void setCamYUpperBound(float);
-
 	/// Determine if intertia is enabled.
 	bool getInertiaEnabled() const;
 
@@ -176,7 +169,6 @@ public:
 		TRANSFORM_NONE,
 		TRANSFORM_ROTATE,
 		TRANSFORM_TRANSLATE_XY,
-		TRANSFORM_TRANSLATE_XY_35,
 		TRANSFORM_TRANSLATE_Z,
 		TRANSFORM_SCALE
 	};
@@ -193,8 +185,7 @@ private:
 
 	bool bEnableMouseMiddleButton = true;
 	bool bApplyInertia = false;
-	bool bEnableDoubleClick = true;
-
+	
 	bool bInsideArcball = false;
 	bool bMouseInputEnabled = true;
 	bool bDistanceSet = false;
@@ -285,9 +276,4 @@ private:
 		TransformType transformType;
 	};
 	std::vector<interaction> interactions;
-
-
-	// custom
-	float camYLowerBound = -1.0;
-	float camYUpperBound = -1.0;
 };

@@ -333,11 +333,11 @@ public:
 		t2.draw();
 	}
 
-	IsTriangle getT1()
+	IsTriangle& getT1()
 	{
 		return t1;
 	}
-	IsTriangle getT2()
+	IsTriangle& getT2()
 	{
 		return t2;
 	}

@@ -819,6 +819,12 @@ extern "C" {
  *  Mouse cursor hover [window attribute](@ref GLFW_HOVERED_attrib).
  */
 #define GLFW_HOVERED                0x0002000B
+/*! @brief Input focus on calling show window hint and attribute
+ *
+ *  Input focus [window hint](@ref GLFW_FOCUS_ON_SHOW_hint) or
+ *  [window attribute](@ref GLFW_FOCUS_ON_SHOW_attrib).
+ */
+#define GLFW_FOCUS_ON_SHOW          0x0002000C
 
 /*! @brief Framebuffer bit depth hint.
  *
@@ -967,6 +973,10 @@ extern "C" {
  *  [attribute](@ref GLFW_CLIENT_API_attrib).
  */
 #define GLFW_CONTEXT_CREATION_API   0x0002200B
+/*! @brief Window content area scaling window
+ *  [window hint](@ref GLFW_SCALE_TO_MONITOR).
+ */
+#define GLFW_SCALE_TO_MONITOR       0x0002200C
 
 #define GLFW_COCOA_RETINA_FRAMEBUFFER 0x00023001
 #define GLFW_COCOA_FRAME_NAME         0x00023002
@@ -3085,6 +3095,11 @@ GLFWAPI void glfwMaximizeWindow(GLFWwindow* window);
  *  hidden.  If the window is already visible or is in full screen mode, this
  *  function does nothing.
  *
+ *  By default, windowed mode windows are focused when shown
+ *  Set the [GLFW_FOCUS_ON_SHOW](@ref GLFW_FOCUS_ON_SHOW_hint) window hint
+ *  to change this behavior for all newly created windows, or change the
+ *  behavior for an existing window with @ref glfwSetWindowAttrib.
+ *
  *  @param[in] window The window to make visible.
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
@@ -3131,6 +3146,10 @@ GLFWAPI void glfwHideWindow(GLFWwindow* window);
  *  By default, both windowed and full screen mode windows are focused when
  *  initially created.  Set the [GLFW_FOCUSED](@ref GLFW_FOCUSED_hint) to
  *  disable this behavior.
+ *
+ *  Also by default, windowed mode windows are focused when shown
+ *  with @ref glfwShowWindow. Set the
+ *  [GLFW_FOCUS_ON_SHOW](@ref GLFW_FOCUS_ON_SHOW_hint) to disable this behavior.
  *
  *  __Do not use this function__ to steal focus from other applications unless
  *  you are certain that is what the user wants.  Focus stealing can be
@@ -3306,8 +3325,9 @@ GLFWAPI int glfwGetWindowAttrib(GLFWwindow* window, int attrib);
  *
  *  The supported attributes are [GLFW_DECORATED](@ref GLFW_DECORATED_attrib),
  *  [GLFW_RESIZABLE](@ref GLFW_RESIZABLE_attrib),
- *  [GLFW_FLOATING](@ref GLFW_FLOATING_attrib) and
- *  [GLFW_AUTO_ICONIFY](@ref GLFW_AUTO_ICONIFY_attrib).
+ *  [GLFW_FLOATING](@ref GLFW_FLOATING_attrib),
+ *  [GLFW_AUTO_ICONIFY](@ref GLFW_AUTO_ICONIFY_attrib) and
+ *  [GLFW_FOCUS_ON_SHOW](@ref GLFW_FOCUS_ON_SHOW_attrib).
  *
  *  Some of these attributes are ignored for full screen windows.  The new
  *  value will take effect if the window is later made windowed.
@@ -3995,8 +4015,8 @@ GLFWAPI int glfwGetKey(GLFWwindow* window, int key);
  *  `GLFW_RELEASE`.
  *
  *  If the @ref GLFW_STICKY_MOUSE_BUTTONS input mode is enabled, this function
- *  `GLFW_PRESS` the first time you call it for a mouse button that was pressed,
- *  even if that mouse button has already been released.
+ *  returns `GLFW_PRESS` the first time you call it for a mouse button that was
+ *  pressed, even if that mouse button has already been released.
  *
  *  @param[in] window The desired window.
  *  @param[in] button The desired [mouse button](@ref buttons).
@@ -4697,7 +4717,7 @@ GLFWAPI const char* glfwGetJoystickGUID(int jid);
  *  This function may be called from the joystick callback, even for a joystick
  *  that is being disconnected.
  *
- *  @param[in] joystick The joystick whose pointer to set.
+ *  @param[in] jid The joystick whose pointer to set.
  *  @param[in] pointer The new value.
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED.
@@ -4722,7 +4742,7 @@ GLFWAPI void glfwSetJoystickUserPointer(int jid, void* pointer);
  *  This function may be called from the joystick callback, even for a joystick
  *  that is being disconnected.
  *
- *  @param[in] joystick The joystick whose pointer to return.
+ *  @param[in] jid The joystick whose pointer to return.
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED.
  *
@@ -4885,6 +4905,8 @@ GLFWAPI const char* glfwGetGamepadName(int jid);
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
  *  GLFW_INVALID_ENUM.
  *
+ *  @thread_safety This function must only be called from the main thread.
+ *
  *  @sa @ref gamepad
  *  @sa @ref glfwUpdateGamepadMappings
  *  @sa @ref glfwJoystickIsGamepad
@@ -4905,8 +4927,6 @@ GLFWAPI int glfwGetGamepadState(int jid, GLFWgamepadstate* state);
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
  *  GLFW_PLATFORM_ERROR.
- *
- *  @remark @wayland Clipboard is currently unimplemented.
  *
  *  @pointer_lifetime The specified string is copied before this function
  *  returns.
@@ -4935,8 +4955,6 @@ GLFWAPI void glfwSetClipboardString(GLFWwindow* window, const char* string);
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
  *  GLFW_PLATFORM_ERROR.
- *
- *  @remark @wayland Clipboard is currently unimplemented.
  *
  *  @pointer_lifetime The returned string is allocated and freed by GLFW.  You
  *  should not free it yourself.  It is valid until the next call to @ref
