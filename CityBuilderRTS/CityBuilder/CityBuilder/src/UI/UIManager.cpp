@@ -5,6 +5,7 @@
 UIManager::UIManager()
 {
 	mainUIBack.load("MainLayout.png");
+	displayFont.load("VCR_OSD_MONO_1.001.ttf", 12);
 }
 
 
@@ -36,7 +37,47 @@ void UIManager::draw()
 		ofSetColor(coord.second);
 		ofDrawRectangle(offsetV, offset * ofGetWindowWidth(), offset * ofGetWindowWidth());
 	}
-	
+	if (selected != Structure::NONE)
+	{
+		ofSetColor(255);
+		base = ofVec2f(0.625, 0.03703704);
+		ofVec2f base2 = ofVec2f(0.625, 0.51851852);
+		float width = 0.09375 * w;
+		ofVec2f offsetV = ofVec2f(0, h - mainUIBack.getHeight()) + (base * ofVec2f(w, w / 4.74074074));
+		ofVec2f offsetV2 = ofVec2f(0, h - mainUIBack.getHeight()) + (base2 * ofVec2f(w, w / 4.74074074));
+		switch (selected)
+		{
+		case Structure::FACTORY:
+			selectedPreview.load("FactoryIcon.png");
+			selectedInfo.load("FactoryInfoIcon.png");
+			break;
+		case Structure::APARTMENT:
+			selectedPreview.load("ApartmentIcon.png");
+			selectedInfo.load("ResidentialInfoIcon.png");
+			break;
+		case Structure::FARM:
+			selectedPreview.load("FarmIcon.png");
+			selectedInfo.load("FarmInfoIcon.png");
+			break;
+		case Structure::OFFICE:
+			selectedPreview.load("OfficeIcon.png");
+			selectedInfo.load("OfficeInfoIcon.png");
+			break;
+		}
+		selectedPreview.draw(offsetV, width, width);
+		selectedInfo.draw(offsetV2, width, width);
+		ofSetColor(ofColor::black);
+		base = ofVec2f(0, h - mainUIBack.getHeight()) + ofVec2f(0.6650625 * w, (38.0 / 54.0) * (w / 4.74074074));
+		std::vector<string> strings;
+		strings.push_back(ofToString(*people));
+		strings.push_back(ofToString(maxPeople));
+		displayFont.drawString(ofToString(ofJoinString(strings, "/")), base.x, base.y);
+		if (selected != Structure::APARTMENT)
+		{
+			base = ofVec2f(0, h - mainUIBack.getHeight()) + ofVec2f(0.6650625 * w, (48.0 / 54.0) * (w / 4.74074074));
+			displayFont.drawString(ofToString(*people * *product), base.x, base.y);
+		}
+	}
 	
 }
 
@@ -108,7 +149,7 @@ void UIManager::mapSet(int x, int y, Structure::StructureType _structureType, Ti
 		switch (_baseType)
 		{
 		case Tile::MOUNTAIN :
-			c = ofColor(155, 155, 155);
+			c = ofColor(125, 125, 125);
 			break;
 		case Tile::FLATLAND :
 			c = ofColor(ofColor::forestGreen);
@@ -134,4 +175,16 @@ void UIManager::mapSet(int x, int y, Structure::StructureType _structureType, Ti
 		}
 	}
 	myMap.insert({ shared_ptr<ofVec2f>(new ofVec2f(x,y)), c });
+}
+
+void UIManager::setSelected(Structure::StructureType _type)
+{
+	selected = _type;
+}
+
+void UIManager::setPPP(int * _people, int * _product, int _maxPeople)
+{
+	people = _people;
+	product = _product;
+	maxPeople = _maxPeople;
 }

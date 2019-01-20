@@ -109,6 +109,11 @@ void ofApp::draw(){
 	// draw the 3d tiles
 	for (auto tile : tiles)
 	{
+		if (selectedStructureTile == tile)
+		{
+			ofSetColor(155, 155, 155);
+			selectedStructureTile->getBoundingPlane()->draw();
+		}
 		tile->draw();
 	}
 
@@ -127,7 +132,7 @@ void ofApp::draw(){
 				case Structure::APARTMENT :
 					if (gold >= Apartment::goldCost && buildingMaterial >= Apartment::buildingMaterialCost)
 					{
-						ofSetColor(36, 193, 64);
+						ofSetColor(144, 238, 144);
 					}
 					else {
 						ofSetColor(224, 67, 56);
@@ -136,7 +141,7 @@ void ofApp::draw(){
 				case Structure::FACTORY :
 					if (gold >= Factory::goldCost && buildingMaterial >= Factory::buildingMaterialCost)
 					{
-						ofSetColor(36, 193, 64);
+						ofSetColor(144, 238, 144);
 					}
 					else {
 						ofSetColor(224, 67, 56);
@@ -145,7 +150,7 @@ void ofApp::draw(){
 				case Structure::FARM :
 					if (gold >= Farm::goldCost && buildingMaterial >= Farm::buildingMaterialCost)
 					{
-						ofSetColor(36, 193, 64);
+						ofSetColor(144, 238, 144);
 					}
 					else {
 						ofSetColor(224, 67, 56);
@@ -154,7 +159,7 @@ void ofApp::draw(){
 				case Structure::OFFICE :
 					if (gold >= Office::goldCost && buildingMaterial >= Office::buildingMaterialCost)
 					{
-						ofSetColor(36, 193, 64);
+						ofSetColor(144, 238, 144);
 					}
 					else {
 						ofSetColor(224, 67, 56);
@@ -163,11 +168,22 @@ void ofApp::draw(){
 				}
 			}
 		}
+		else if (hoveredTile == selectedStructureTile)
+		{
+			ofSetColor(155, 155, 155);
+		} 
 		else
 		{
-			ofSetColor(52, 209, 226);
+			ofSetColor(23, 90, 198);
 		}
 		hoveredTile->getBoundingPlane()->draw();
+	}
+
+	// draw outline around selected building
+	if (selectedStructureTile != nullptr)
+	{
+		ofSetColor(155, 155, 155);
+		selectedStructureTile->draw();
 	}
 	
 	sunLight1.disable();
@@ -222,6 +238,8 @@ void ofApp::keyPressed(int key){
 	if (key == ofKey::OF_KEY_ESC)
 	{
 		selectedBuildType = Structure::NONE;
+		selectedStructureTile = nullptr;
+		uim.setSelected(Structure::NONE);
 		uim.resetPreview();
 	}
 }
@@ -256,7 +274,14 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
 	// if right click and a hoveredtile is known, try to place a building
-	if (button == 2 && hoveredTile != nullptr)
+	if (button == 0 && hoveredTile != nullptr && hoveredTile->isOccupied())
+	{
+		selectedStructureTile = hoveredTile;
+		uim.setSelected(selectedStructureTile->getStructure()->getType());
+		uim.setPPP(selectedStructureTile->getStructure()->getNumberOfPeopleP(), 
+			selectedStructureTile->getStructure()->getPPPP(), selectedStructureTile->getStructure()->getMaxPeople());
+	}
+	else if (button == 2 && hoveredTile != nullptr)
 	{
 		switch (selectedBuildType)
 		{
@@ -372,6 +397,8 @@ void ofApp::officeClicked(void)
 	selectedBuildType = Structure::OFFICE;
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
+	selectedStructureTile = nullptr;
+	uim.setSelected(Structure::NONE);
 }
 
 void ofApp::farmClicked(void)
@@ -379,6 +406,8 @@ void ofApp::farmClicked(void)
 	selectedBuildType = Structure::FARM;
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
+	selectedStructureTile = nullptr;
+	uim.setSelected(Structure::NONE);
 }
 
 
@@ -387,6 +416,8 @@ void ofApp::factoryClicked(void)
 	selectedBuildType = Structure::FACTORY;
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
+	selectedStructureTile = nullptr;
+	uim.setSelected(Structure::NONE);
 }
 
 
@@ -395,6 +426,8 @@ void ofApp::apartmentClicked(void)
 	selectedBuildType = Structure::APARTMENT;
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
+	selectedStructureTile = nullptr;
+	uim.setSelected(Structure::NONE);
 }
 
 void ofApp::updateResources()

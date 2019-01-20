@@ -31,3 +31,8 @@ int Factory::getPPP()
 	return maxProduct;
 }
 
+int Factory::getMaxPeople()
+{
+	return maxPeople;
+}
+

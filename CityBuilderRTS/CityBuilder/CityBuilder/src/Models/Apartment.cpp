@@ -31,3 +31,8 @@ int Apartment::getPPP()
 {
 	return maxProduct;
 }
+
+int Apartment::getMaxPeople()
+{
+	return maxPeople;
+}

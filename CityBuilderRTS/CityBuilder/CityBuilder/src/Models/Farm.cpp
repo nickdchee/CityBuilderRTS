@@ -30,3 +30,8 @@ int Farm::getPPP()
 {
 	return maxProduct;
 }
+
+int Farm::getMaxPeople()
+{
+	return maxPeople;
+}

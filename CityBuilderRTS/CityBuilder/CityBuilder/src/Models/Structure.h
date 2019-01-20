@@ -21,11 +21,14 @@ public:
 	virtual StructureType getType() = 0;
 	std::shared_ptr<ofxAssimpModelLoader> getModel();
 	int getNumberOfPeople();
+	int* getNumberOfPeopleP();
 	void addResident();
 	void removeResident();
 	virtual bool isFull() = 0;
 	bool isEmpty();
 	virtual int getPPP() = 0; // product per person
+	int* getPPPP(); // product per person pointer (mouthfull!)
+	virtual int getMaxPeople() = 0;
 
 protected:
 	float size;

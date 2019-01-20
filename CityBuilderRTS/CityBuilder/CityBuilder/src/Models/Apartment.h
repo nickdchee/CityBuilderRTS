@@ -12,8 +12,10 @@ public:
 
 	static const int goldCost = 50;
 	static const int buildingMaterialCost = 100;
+
+	int getMaxPeople() override;
 private:
-	int maxPeople = 200;
+	int maxPeople = 80;
 	int maxProduct = -1; // not used for apartment
 };
 

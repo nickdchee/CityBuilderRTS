@@ -85,5 +85,8 @@ class ofApp : public ofBaseApp{
 		int gold = 500;
 		int buildingMaterial = 500;
 		int foodInflow = 0;
+
+		// selecting an already placed building related
+		std::shared_ptr<Tile> selectedStructureTile;
 		
 };
