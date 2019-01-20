@@ -2,8 +2,8 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
 
+	// MUSIC SETUP
 	ofSoundSetVolume(0.5);
-
 	introSound.load("bx_launch_game.mp3");
 	introSound.setMultiPlay(true);
 	backgroundMusic.load("bx_Charities_and_Plastic_Blocks.mp3");
@@ -17,24 +17,18 @@ void ofApp::setup() {
 	tapSelectSound.setVolume(1.0);
 	buildSound.load("bx_Build_Building.mp3");
 	buildSound.setMultiPlay(true);
-
 	introSound.setVolume(0.4);
 	introSound.play();
 	backgroundMusic.setVolume(0.4);
 	backgroundMusic.setLoop(true);
 	backgroundMusic.play();
 
-
-
-	// test
+	// ofx 3d/graphics setup
 	ofBackground(255, 255, 255);
 	ofSetVerticalSync(true);
-
 	sunLight1.setPosition(-29000,-44000, 34000);
 	sunLight1.setAreaLight(500, 500);
-	//sunLight1.setPosition(0, 200, 400);
 	ofSetBackgroundColor(ofColor(116, 231, 255));
-
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
@@ -47,11 +41,12 @@ void ofApp::setup() {
 	cam.setCamYLowerBound(-1);
 	cam.setPosition(0, 400, 0);
 	ofSetEscapeQuitsApp(false);
-
 	cam.setVFlip(false);
+
+	// prepare font
 	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
 
-	// tile stuff
+	// init our tiles and map
 	float size = 200;
 	for (int i1 = 0; i1 < 17; ++i1)
 	{
@@ -69,14 +64,16 @@ void ofApp::setup() {
 	}
 
 
-	// display menu testing
-
+	// display menu boolean
 	displayMenu = false;
+
+	// lambda functions for button listeners
 	std::function<void()> factoryClickedE = [&] { factoryClicked(); };
 	std::function<void()> apartmentClickedE = [&] { apartmentClicked(); };
 	std::function<void()> farmClickedE = [&] { farmClicked(); };
 	std::function<void()> officeClickedE = [&] { officeClicked(); };
 
+	// add the buttons and listeners
 	uim.addButton("factory", "leftPanel", "FactoryIcon.png", false);
 	uim.addListener("factory", "leftPanel", factoryClickedE);
 	uim.addButton("apartment", "leftPanel", "ApartmentIcon.png", false);
@@ -91,10 +88,11 @@ void ofApp::setup() {
 void ofApp::update(){
 	if (ofGetFrameNum() % 900 == 0) // every 15 seconds at 60fps
 	{
-		addResidents(10);
+		addResidents(10); // add 10 residesnts to the game
 	}
 	if (ofGetFrameNum() % 1800 == 0) // every 30 seconds at 60fps
 	{
+		// make new calculations to update the game state
 		updateHappiness();
 		updateResources();
 	}
@@ -108,12 +106,13 @@ void ofApp::draw(){
 	cam.begin();
 	sunLight1.enable();
 
-	int i = 0;
+	// draw the 3d tiles
 	for (auto tile : tiles)
 	{
 		tile->draw();
 	}
-	
+
+	// draw the appropriate outline
 	if (hoveredTile != nullptr)
 	{
 		if (selectedBuildType != Structure::NONE)
@@ -178,7 +177,7 @@ void ofApp::draw(){
 
 	uim.draw();
 
-	// testing material display
+	// display game state
 	ofSetColor(ofColor::black);
 	displayFont.drawString("Gold: " + ofToString(gold), 10,30);
 	displayFont.drawString("Building Material: " + ofToString(buildingMaterial), 10, 30 + displayFont.getAscenderHeight());
@@ -189,7 +188,7 @@ void ofApp::draw(){
 	displayFont.drawString("Jobless: " + ofToString(jobless), 10, 30 + 6 * displayFont.getAscenderHeight());
 
 
-	// testing menu display
+	// menu display for help info
 	if (displayMenu) {
 		ofSetColor(ofColor::black);
 		int offset = 400;
@@ -219,38 +218,12 @@ void ofApp::keyPressed(int key){
 			displayMenu = false;
 		}
 	}
+	// clear all current actions
 	if (key == ofKey::OF_KEY_ESC)
 	{
 		selectedBuildType = Structure::NONE;
 		uim.resetPreview();
 	}
-	/*
-	if (key == ofKey::OF_KEY_DOWN)
-	{
-		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, -1000, 0));
-	}
-	if (key == ofKey::OF_KEY_UP)
-	{
-		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, 1000, 0));
-	}
-	if (key == ofKey::OF_KEY_LEFT)
-	{
-		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(-1000, 0, 0));
-	}
-	if (key == ofKey::OF_KEY_RIGHT)
-	{
-		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(1000, 0, 0));
-	}
-	if (key == ofKey::OF_KEY_DEL)
-	{
-		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, 0, 1000));
-	}
-	if (key == ofKey::OF_KEY_BACKSPACE)
-	{
-		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, 0, -1000));
-	}
-	std::cout << sunLight1.getPosition() << std::endl;
-	*/
 }
 
 //--------------------------------------------------------------
@@ -260,6 +233,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
+	// do raycasting to figure out which tile the mouse is selecting
 	IntersectionData id;
 	ofxIntersection is;
 	IsRay ray;
@@ -281,6 +255,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+	// if right click and a hoveredtile is known, try to place a building
 	if (button == 2 && hoveredTile != nullptr)
 	{
 		switch (selectedBuildType)
@@ -356,6 +331,7 @@ void ofApp::mousePressed(int x, int y, int button){
 			break;
 		}
 	}
+	// if the mouse is within the button shelf ui zone, handle the mouse click via the ui manager
 	if (y > ofGetWindowHeight() / 4.74074074 && button == 0)
 	{
 		uim.handleClick(x, y);

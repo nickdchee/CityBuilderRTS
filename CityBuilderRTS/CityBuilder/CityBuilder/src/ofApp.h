@@ -15,6 +15,7 @@
 class ofApp : public ofBaseApp{
 
 	public:
+		// regular openframeworks methods
 		void setup();
 		void update();
 		void draw();
@@ -31,28 +32,32 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		// test stuff
+		// ofx objects
 		ofLight sunLight1;
 		ofEasyCam cam;
-
-
-		// Material Display test
 		ofTrueTypeFont displayFont;
 
-		// Display menu test
+		// Display menu (just text)
 		bool displayMenu;
 
+		// all of our physical tiles
 		std::vector<std::shared_ptr<Tile>> tiles;
-		std::shared_ptr<Tile> hoveredTile = nullptr;
+
+		// uimanager that handles the bottom shelf ui
 		UIManager uim;
 
+		// button listener functions
 		void factoryClicked();
 		void apartmentClicked();
 		void farmClicked();
 		void officeClicked();
 
+		// current selected building type
 		Structure::StructureType selectedBuildType = Structure::NONE;
+		// tile the mouse cursor is hovering over
+		std::shared_ptr<Tile> hoveredTile = nullptr;
 
+		// all of the sounds used (edited/created by Dillon Pratt)
 		ofSoundPlayer introSound;
 		ofSoundPlayer backgroundMusic;
 		ofSoundPlayer demoSound;
@@ -60,18 +65,22 @@ class ofApp : public ofBaseApp{
 		ofSoundPlayer tapSelectSound;
 		ofSoundPlayer buildSound;
 
-
+		// update the resource counts (gold, foodinflow, materials, etc)
 		void updateResources();
 
+		// add x ammount of residents to the game
 		void addResidents(int _num);
+
+		// try to place residents into residence/workplace
 		void placeResidents();
+
+		// arithmetic for calculating happyness
 		void updateHappiness();
 
-
+		// all general variables
 		int residents = 0;
 		int homeless = 0;
 		int jobless = 0;
-
 		int happiness = 100;
 		int gold = 500;
 		int buildingMaterial = 500;
