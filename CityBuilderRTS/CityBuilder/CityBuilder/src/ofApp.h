@@ -37,7 +37,7 @@ class ofApp : public ofBaseApp{
 		ofImage mainUI;
 		UIManager uim;
 
-		void button1();
-		void button2();
+		void factoryClicked();
+		void apartmentClicked();
 		
 };

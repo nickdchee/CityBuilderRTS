@@ -29,7 +29,6 @@ bool Button::clicked(float x, float y)
 	y2 = y1 + imageScale * containerSize.x;
 	if (x1 <= x && x <= x2 && y1 <= y && y <= y2)
 	{
-		std::cout << "CLICKED!" << std::endl;
 		for (auto listener : listeners)
 		{
 			listener();

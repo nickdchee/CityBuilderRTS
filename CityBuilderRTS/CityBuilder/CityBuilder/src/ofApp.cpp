@@ -35,30 +35,14 @@ void ofApp::setup() {
 		}
 	}
 
-	std::function<void()> testButton1 = [&] { button1(); };
-	std::function<void()> testButton2 = [&] { button2(); };
-	std::function<void()> testButton3 = [&] { button1(); };
-	std::function<void()> testButton4 = [&] { button2(); };
+	std::function<void()> factoryClickedE = [&] { factoryClicked(); };
+	std::function<void()> apartmentClickedE = [&] { apartmentClicked(); };
 
 
-	
-	uim.addButton("factory1", "rightPanel", "FactoryIcon.png", true);
-	uim.addListener("factory1", "rightPanel", testButton1);
-	uim.addButton("factory2", "rightPanel", "FactoryIcon.png", true);
-	uim.addListener("factory2", "rightPanel", testButton2);
-	uim.addButton("factory3", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory4", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory5", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory6", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory7", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory8", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory9", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory10", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory11", "rightPanel", "FactoryIcon.png", true);
-	uim.addButton("factory12", "rightPanel", "FactoryIcon.png", true);
-
-	uim.addButton("factory13", "leftPanel", "FactoryIcon.png", false);
-	uim.addListener("factory13", "leftPanel", testButton3);
+	uim.addButton("factory", "leftPanel", "FactoryIcon.png", false);
+	uim.addListener("factory", "leftPanel", factoryClickedE);
+	uim.addButton("apartment", "leftPanel", "ApartmentIcon.png", false);
+	uim.addListener("apartment", "leftPanel", apartmentClickedE);
 }
 
 //--------------------------------------------------------------
@@ -154,13 +138,13 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 }
 
 
-void ofApp::button1(void)
+void ofApp::factoryClicked(void)
 {
-	std::cout << "button 1!" << std::endl;
+	std::cout << "Factory selected!" << std::endl;
 }
 
 
-void ofApp::button2(void)
+void ofApp::apartmentClicked(void)
 {
-	std::cout << "button 2!" << std::endl;
+	std::cout << "Appartment selected!" << std::endl;
 }
