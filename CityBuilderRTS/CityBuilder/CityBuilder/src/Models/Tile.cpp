@@ -1,6 +1,6 @@
 #include "Tile.h"
 
-Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size)
+Tile::Tile(int x, int y, ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size), x(x), y(y)
 {
 	boundingPlane = std::shared_ptr<IsFinitePlane>(new IsFinitePlane());
 	boundingPlane->set(position + 1, size);
@@ -12,9 +12,14 @@ Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), 
 		baseModel->loadModel("flatland.fbx");
 		break;
 	case MOUNTAIN :
-		baseModel->loadModel("mountain.fbx");
+		baseModel->loadModel("MountainTile.fbx");
 		break;
 	}
+	flatland.loadModel("flatland.fbx");
+	flatland.setScaleNormalization(false);
+	flatland.setRotation(0, 180, 1, 0, 0);
+	flatland.setPosition(position.x, position.y, position.z);
+
 	baseModel->setScaleNormalization(false);
 	baseModel->setRotation(0, 180, 1, 0, 0);
 	baseModel->setPosition(position.x, position.y, position.z);
@@ -92,7 +97,24 @@ void Tile::draw()
 		}
 		if (timer <= 0) { inConstruction = false; }
 	}
-	else {
+	switch (type)
+	{
+	case MOUNTAIN :
 		baseModel->drawFaces();
+		flatland.drawFaces();
+		break;
+	case FLATLAND :
+		baseModel->drawFaces();
+		break;
 	}
+}
+
+int Tile::getX()
+{
+	return x;
+}
+
+int Tile::getY()
+{
+	return y;
 }

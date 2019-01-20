@@ -1332,3 +1332,4 @@ void ofTrueTypeFont::drawStringAsShapes(const std::string& str, float x, float y
 std::size_t ofTrueTypeFont::getNumCharacters() const{
 	return cps.size();
 }
+

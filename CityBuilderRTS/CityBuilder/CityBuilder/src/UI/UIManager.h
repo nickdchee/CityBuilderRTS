@@ -6,6 +6,7 @@
 #include <memory>
 #include <functional>
 #include "../Models/Structure.h"
+#include "../Models/Tile.h"
 
 class UIManager
 {
@@ -19,6 +20,7 @@ public:
 	void addListener(string _buttonName, string _panelName, std::function<void()> _listenerj);
 	void setPreview(Structure::StructureType _type);
 	void resetPreview();
+	void mapSet(int x, int y, Structure::StructureType _structureType, Tile::BaseType _baseType);
 
 private:
 	std::unordered_map<string, std::shared_ptr<Panel>> panels;
@@ -27,5 +29,6 @@ private:
 	bool rightPanelCheck;
 	ofImage preview;
 	bool displayPreview = false;
+	std::unordered_map<shared_ptr<ofVec2f>, ofColor> myMap;
 };
 

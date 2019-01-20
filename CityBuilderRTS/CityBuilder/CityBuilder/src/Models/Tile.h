@@ -17,7 +17,7 @@ public:
 		FLATLAND, MOUNTAIN
 	};
 
-	Tile(ofVec3f pos, BaseType type, float size = 200);
+	Tile(int x, int y, ofVec3f pos, BaseType type, float size = 200);
 	~Tile() = default;
 
 	std::shared_ptr<ofxAssimpModelLoader> getBaseModel();
@@ -32,6 +32,9 @@ public:
 
 	void draw();
 
+	int getX();
+	int getY();
+
 
 private:
 	ofVec3f position; // position of the tile
@@ -44,7 +47,10 @@ private:
 	std::shared_ptr<Structure> structure = nullptr; // if this is nullptr, then it is not occupied
 	std::shared_ptr<IsFinitePlane> boundingPlane = nullptr; // bounding plane for collisions
 	ofxAssimpModelLoader constructionModel;
+	ofxAssimpModelLoader flatland;
 
 	int timer = 0;
 	bool inConstruction = false;
+
+	int x, y;
 };

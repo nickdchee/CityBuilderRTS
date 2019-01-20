@@ -29,25 +29,11 @@ void ofApp::setup() {
 	// test
 	ofBackground(255, 255, 255);
 	ofSetVerticalSync(true);
-	light.setPosition(0, 200, 300);
-	light.setAmbientColor(ofColor::lightGray);
-	light.setDiffuseColor(ofColor::yellow);
-	light.setSpecularColor(ofColor::white);
 
-	ofSetSmoothLighting(true);
-
-	sunLight1.setPosition(0, -10000, 17500);
-	sunLight1.setPointLight();
-	sunLight1.setDiffuseColor(ofColor(255.f, 254.f, 224.f));
-	sunLight1.setSpecularColor(ofColor(255.f, 254.f, 224.f));
-	sunLight1.setAttenuation(1.0);
-
-	material.setShininess(30);
-	yellowColor.setBrightness(180.f);
-	yellowColor.setSaturation(150.f);
-	materialColor.setBrightness(250.f);
-	materialColor.setSaturation(200.f);
-	sunLight1.setAmbientColor(ofColor::black);
+	sunLight1.setPosition(-29000,-44000, 34000);
+	sunLight1.setAreaLight(500, 500);
+	//sunLight1.setPosition(0, 200, 400);
+	ofSetBackgroundColor(ofColor(116, 231, 255));
 
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
@@ -63,23 +49,25 @@ void ofApp::setup() {
 	ofSetEscapeQuitsApp(false);
 
 	cam.setVFlip(false);
-	ofEnableAlphaBlending();
-	ofEnableSmoothing();
-	//ofEnableAntiAliasing();
-
+	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
 
 	// tile stuff
 	float size = 200;
-	for (int i1 = 0; i1 < 10; ++i1)
+	for (int i1 = 0; i1 < 17; ++i1)
 	{
 		for (int i2 = 0; i2 < 10; ++i2)
 		{
 			int r = rand() % 2;
-			tiles.push_back(std::shared_ptr<Tile>(new Tile(ofVec3f(i1 * size, 0, i2 * size), (Tile::BaseType)r, size)));
+			if (r == 1)
+			{
+				int r2 = rand() % 2;
+				r = r2;
+			}
+			tiles.push_back(std::shared_ptr<Tile>(new Tile(i1, i2, ofVec3f(i1 * size, 0, i2 * size), (Tile::BaseType)r, size)));
+			uim.mapSet(i1, i2, Structure::NONE, (Tile::BaseType)r);
 		}
 	}
 
-	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
 
 	// display menu testing
 
@@ -114,19 +102,18 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	ofSetColor(255);
 	ofEnableDepthTest();
+	ofEnableLighting();
 	cam.begin();
 	sunLight1.enable();
-	material.begin();
 
-
+	int i = 0;
 	for (auto tile : tiles)
 	{
-		ofSetColor(150);
 		tile->draw();
-
 	}
-
+	
 	if (hoveredTile != nullptr)
 	{
 		if (selectedBuildType != Structure::NONE)
@@ -146,7 +133,6 @@ void ofApp::draw(){
 					else {
 						ofSetColor(224, 67, 56);
 					}
-					break;
 					break;
 				case Structure::FACTORY :
 					if (gold >= Factory::goldCost && buildingMaterial >= Factory::buildingMaterialCost)
@@ -182,11 +168,9 @@ void ofApp::draw(){
 		{
 			ofSetColor(52, 209, 226);
 		}
-
 		hoveredTile->getBoundingPlane()->draw();
 	}
-
-	material.end();
+	
 	sunLight1.disable();
 	cam.end();
 	ofDisableDepthTest();
@@ -208,15 +192,13 @@ void ofApp::draw(){
 	// testing menu display
 	if (displayMenu) {
 		ofSetColor(ofColor::black);
-		displayFont.load("VCR_OSD_MONO_1.001.ttf", 10);
-		displayFont.drawString("F1 to close this menu", ofGetWindowWidth() - 200, displayFont.getAscenderHeight());
-		displayFont.drawString("ESC to cancel building", ofGetWindowWidth() - 200, 2 * displayFont.getAscenderHeight());
-		displayFont.drawString("Right click to place", ofGetWindowWidth() - 200, 3 * displayFont.getAscenderHeight());
-		displayFont.drawString("Left click on UI/pan", ofGetWindowWidth() - 200, 4 * displayFont.getAscenderHeight());
-		displayFont.drawString("Scroll to zoom", ofGetWindowWidth() - 200, 5 * displayFont.getAscenderHeight());
-		displayFont.drawString("GOAL: manage population", ofGetWindowWidth() - 200, 6 * displayFont.getAscenderHeight());
-		displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
-
+		int offset = 400;
+		displayFont.drawString("F1 to close this menu", ofGetWindowWidth() - offset, displayFont.getAscenderHeight());
+		displayFont.drawString("ESC to cancel building", ofGetWindowWidth() - offset, 2 * displayFont.getAscenderHeight());
+		displayFont.drawString("Right click to place", ofGetWindowWidth() - offset, 3 * displayFont.getAscenderHeight());
+		displayFont.drawString("Left click on UI/pan", ofGetWindowWidth() - offset, 4 * displayFont.getAscenderHeight());
+		displayFont.drawString("Scroll to zoom", ofGetWindowWidth() - offset, 5 * displayFont.getAscenderHeight());
+		displayFont.drawString("GOAL: manage population", ofGetWindowWidth() - offset, 6 * displayFont.getAscenderHeight());
 	}
 	else {
 		ofSetColor(ofColor::black);
@@ -242,6 +224,33 @@ void ofApp::keyPressed(int key){
 		selectedBuildType = Structure::NONE;
 		uim.resetPreview();
 	}
+	/*
+	if (key == ofKey::OF_KEY_DOWN)
+	{
+		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, -1000, 0));
+	}
+	if (key == ofKey::OF_KEY_UP)
+	{
+		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, 1000, 0));
+	}
+	if (key == ofKey::OF_KEY_LEFT)
+	{
+		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(-1000, 0, 0));
+	}
+	if (key == ofKey::OF_KEY_RIGHT)
+	{
+		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(1000, 0, 0));
+	}
+	if (key == ofKey::OF_KEY_DEL)
+	{
+		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, 0, 1000));
+	}
+	if (key == ofKey::OF_KEY_BACKSPACE)
+	{
+		sunLight1.setPosition(sunLight1.getPosition() + ofVec3f(0, 0, -1000));
+	}
+	std::cout << sunLight1.getPosition() << std::endl;
+	*/
 }
 
 //--------------------------------------------------------------
@@ -288,6 +297,7 @@ void ofApp::mousePressed(int x, int y, int button){
 				uim.resetPreview();
 				selectedBuildType = Structure::NONE;
 				gold -= Apartment::goldCost; buildingMaterial -= Apartment::buildingMaterialCost;
+				uim.mapSet(hoveredTile->getX(), hoveredTile->getY(), Structure::APARTMENT, hoveredTile->getType());
 			}
 			else {
 				tapBlockedSound.play();
@@ -303,6 +313,8 @@ void ofApp::mousePressed(int x, int y, int button){
 				uim.resetPreview();
 				selectedBuildType = Structure::NONE;
 				gold -= Factory::goldCost; buildingMaterial -= Factory::buildingMaterialCost;
+
+				uim.mapSet(hoveredTile->getX(), hoveredTile->getY(), Structure::FACTORY, hoveredTile->getType());
 			}
 			else {
 				tapBlockedSound.play();
@@ -318,6 +330,8 @@ void ofApp::mousePressed(int x, int y, int button){
 				uim.resetPreview();
 				selectedBuildType = Structure::NONE;
 				gold -= Farm::goldCost; buildingMaterial -= Farm::buildingMaterialCost;
+
+				uim.mapSet(hoveredTile->getX(), hoveredTile->getY(), Structure::FARM, hoveredTile->getType());
 			}
 			else {
 				tapBlockedSound.play();
@@ -333,6 +347,8 @@ void ofApp::mousePressed(int x, int y, int button){
 				uim.resetPreview();
 				selectedBuildType = Structure::NONE;
 				gold -= Office::goldCost; buildingMaterial -= Office::buildingMaterialCost;
+
+				uim.mapSet(hoveredTile->getX(), hoveredTile->getY(), Structure::OFFICE, hoveredTile->getType());
 			}
 			else {
 				tapBlockedSound.play();
