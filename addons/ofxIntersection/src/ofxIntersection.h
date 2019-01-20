@@ -329,8 +329,11 @@ public:
 	}
 	void draw()
 	{
-		t1.draw();
-		t2.draw();
+		ofSetLineWidth(10);
+		ofDrawLine(p0, p1);
+		ofDrawLine(p1, p2);
+		ofDrawLine(p2, p3);
+		ofDrawLine(p3, p0);
 	}
 
 	IsTriangle getT1()
