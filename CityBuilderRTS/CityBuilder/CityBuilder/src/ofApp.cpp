@@ -14,16 +14,17 @@ void ofApp::setup() {
 	cam.disableDoubleClick();
 	cam.enableOrtho();
 	cam.setMouseScrollSensitivity(20.0f);
-	cam.setScale(0.3, 0.3, 0.3);
+	cam.setScale(0.3,0.3,0.3);
 	cam.setCamYUpperBound(-1);
 	cam.setCamYLowerBound(-1);
 	cam.setPosition(0, 400, 0);
 	cam.setNearClip(0.1f);
-
+		
 	cam.setVFlip(false);
-	ofEnableAlphaBlending();
+	//ofEnableAlphaBlending();
 
-	mainUI.load("MainLayout.png");
+	mainUI.load("MainLayout.jpg");
+	//mainUI.setImageType(OF_IMAGE_COLOR);
 
 
 	// tile stuff
@@ -51,9 +52,11 @@ void ofApp::draw(){
 	ofPoint mouse(ofGetMouseX(), ofGetMouseY());
 	ray.set(cam.screenToWorld(mouse), cam.getZAxis());
 
+
 	ofEnableDepthTest();
 	cam.begin();	
 	light.enable();
+
 
 	for (auto tile : tiles)
 	{
@@ -67,12 +70,16 @@ void ofApp::draw(){
 		}
 	}
 
-	cam.end();
-	light.disable();
-	ofDisableDepthTest();
 
-	ofSetColor(255);
-	mainUI.draw(0,ofGetWindowHeight()-mainUI.getHeight());
+	light.disable();
+	cam.end();
+	ofDisableDepthTest();
+	ofDisableLighting();
+
+	ofSetColor(ofColor::white);
+	mainUI.draw(0, ofGetWindowHeight() - mainUI.getHeight());
+
+	
 
 
 }
