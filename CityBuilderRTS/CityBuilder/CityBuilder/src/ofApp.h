@@ -15,6 +15,7 @@
 class ofApp : public ofBaseApp{
 
 	public:
+		// regular openframeworks methods
 		void setup();
 		void update();
 		void draw();
@@ -31,40 +32,33 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		// test stuff
-		ofLight light;
+		// ofx objects
 		ofLight sunLight1;
-		ofLight sunLight2;
-		ofLight moonLight1;
-		ofLight moonLight2;
 		ofEasyCam cam;
-
-		// Shading Test
-		ofMaterial material;
-		ofColor yellowColor;
-		ofColor materialColor;
-		ofShader shader;
-
-		// Material Display test
-		int silver;
-		int bronze;
-		int lumber;
 		ofTrueTypeFont displayFont;
 
-		// Display menu test
+		// Display menu (just text)
 		bool displayMenu;
 
+		// all of our physical tiles
 		std::vector<std::shared_ptr<Tile>> tiles;
-		std::shared_ptr<Tile> hoveredTile = nullptr;
+
+		// uimanager that handles the bottom shelf ui
 		UIManager uim;
 
+		// button listener functions
 		void factoryClicked();
 		void apartmentClicked();
 		void farmClicked();
 		void officeClicked();
+		void upgradeClicked();
 
+		// current selected building type
 		Structure::StructureType selectedBuildType = Structure::NONE;
+		// tile the mouse cursor is hovering over
+		std::shared_ptr<Tile> hoveredTile = nullptr;
 
+		// all of the sounds used (edited/created by Dillon Pratt)
 		ofSoundPlayer introSound;
 		ofSoundPlayer backgroundMusic;
 		ofSoundPlayer demoSound;
@@ -72,21 +66,30 @@ class ofApp : public ofBaseApp{
 		ofSoundPlayer tapSelectSound;
 		ofSoundPlayer buildSound;
 
-
+		// update the resource counts (gold, foodinflow, materials, etc)
 		void updateResources();
 
+		// add x ammount of residents to the game
 		void addResidents(int _num);
+
+		// try to place residents into residence/workplace
 		void placeResidents();
+
+		// arithmetic for calculating happyness
 		void updateHappiness();
 
-
+		// all general variables
 		int residents = 0;
 		int homeless = 0;
 		int jobless = 0;
-
 		int happiness = 100;
-		int gold = 0;
-		int buildingMaterial = 0;
+		int gold = 500;
+		int buildingMaterial = 500;
 		int foodInflow = 0;
+
+		// selecting an already placed building related
+		std::shared_ptr<Tile> selectedStructureTile;
+
+		bool gameLost = false;
 		
 };

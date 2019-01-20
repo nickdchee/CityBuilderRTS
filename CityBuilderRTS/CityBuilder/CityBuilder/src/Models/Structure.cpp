@@ -41,3 +41,6 @@ bool Structure::isEmpty()
 	return (people <= 0);
 }
 
+void Structure::upgrade()
+{
+}

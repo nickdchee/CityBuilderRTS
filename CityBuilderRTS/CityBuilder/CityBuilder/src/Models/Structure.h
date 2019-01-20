@@ -26,6 +26,9 @@ public:
 	virtual bool isFull() = 0;
 	bool isEmpty();
 	virtual int getPPP() = 0; // product per person
+	virtual int getMaxPeople() = 0;
+	virtual bool isUpgradable() = 0;
+	virtual void upgrade();
 
 protected:
 	float size;
@@ -33,5 +36,6 @@ protected:
 	std::shared_ptr<ofxAssimpModelLoader> model;
 	int people = 0;
 	int maxProduct = 0;
+	bool upgradable;
 };
 

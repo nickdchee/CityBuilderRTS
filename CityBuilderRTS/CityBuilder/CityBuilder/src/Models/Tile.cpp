@@ -1,6 +1,6 @@
 #include "Tile.h"
 
-Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size)
+Tile::Tile(int x, int y, ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size), x(x), y(y)
 {
 	boundingPlane = std::shared_ptr<IsFinitePlane>(new IsFinitePlane());
 	boundingPlane->set(position + 1, size);
@@ -12,12 +12,23 @@ Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), 
 		baseModel->loadModel("flatland.fbx");
 		break;
 	case MOUNTAIN :
-		baseModel->loadModel("mountain.fbx");
+		baseModel->loadModel("MountainTile.fbx");
 		break;
 	}
+	flatland.loadModel("flatland.fbx");
+	flatland.setScaleNormalization(false);
+	flatland.setRotation(0, 180, 1, 0, 0);
+	flatland.setPosition(position.x, position.y, position.z);
+
 	baseModel->setScaleNormalization(false);
 	baseModel->setRotation(0, 180, 1, 0, 0);
 	baseModel->setPosition(position.x, position.y, position.z);
+
+
+	constructionModel.loadModel("ConstructionTile.fbx");
+	constructionModel.setScaleNormalization(false);
+	constructionModel.setRotation(0, 180, 1, 0, 0);
+	constructionModel.setPosition(position.x, position.y, position.z);
 }
 
 std::shared_ptr<ofxAssimpModelLoader> Tile::getBaseModel()
@@ -47,6 +58,8 @@ void Tile::placeStructure(Structure::StructureType _type)
 		structure = std::shared_ptr<Structure>(new Office(position));
 		break;
 	}
+	timer = 4 * 60; // 4 seconds roughly
+	inConstruction = true;
 }
 
 bool Tile::isOccupied()
@@ -67,4 +80,41 @@ std::shared_ptr<Structure> Tile::getStructure()
 Tile::BaseType Tile::getType()
 {
 	return type;
+}
+
+
+void Tile::draw()
+{
+	if (isOccupied())
+	{
+		if (inConstruction)
+		{
+			--timer;
+			constructionModel.drawFaces();
+		}
+		else {
+			structure->getModel()->drawFaces();
+		}
+		if (timer <= 0) { inConstruction = false; }
+	}
+	switch (type)
+	{
+	case MOUNTAIN :
+		baseModel->drawFaces();
+		flatland.drawFaces();
+		break;
+	case FLATLAND :
+		baseModel->drawFaces();
+		break;
+	}
+}
+
+int Tile::getX()
+{
+	return x;
+}
+
+int Tile::getY()
+{
+	return y;
 }

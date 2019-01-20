@@ -30,3 +30,19 @@ int Farm::getPPP()
 {
 	return maxProduct;
 }
+
+int Farm::getMaxPeople()
+{
+	return maxPeople;
+}
+
+bool Farm::isUpgradable()
+{
+	return upgradable;
+}
+
+void Farm::upgrade()
+{
+	upgradable = false;
+	maxProduct += 4;
+}
