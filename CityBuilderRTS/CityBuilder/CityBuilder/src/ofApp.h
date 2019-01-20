@@ -29,9 +29,16 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		// test stuff
-		ofLight	light;
+		ofLight sunLight1;
+		ofLight sunLight2;
+		ofLight moonLight1;
+		ofLight moonLight2;
 		ofEasyCam cam;
 		std::vector<Tile> tiles;
 		ofImage mainUI;
+
+		ofMaterial material;
+		ofColor yellowColor;
+		ofColor materialColor;
 		
 };
