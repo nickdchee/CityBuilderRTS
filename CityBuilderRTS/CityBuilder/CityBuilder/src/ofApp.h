@@ -89,5 +89,7 @@ class ofApp : public ofBaseApp{
 
 		// selecting an already placed building related
 		std::shared_ptr<Tile> selectedStructureTile;
+
+		bool gameLost = false;
 		
 };

@@ -89,9 +89,16 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if (happiness <= 5)
+	{
+		gameLost = true;
+		cam.disableMouseInput();
+		ofSetEscapeQuitsApp(true);
+		return;
+	}
 	if (ofGetFrameNum() % 900 == 0) // every 15 seconds at 60fps
 	{
-		addResidents(10); // add 10 residesnts to the game
+		addResidents(rand() % 15); // add 0-15 residesnts to the game
 	}
 	if (ofGetFrameNum() % 1800 == 0) // every 30 seconds at 60fps
 	{
@@ -196,6 +203,14 @@ void ofApp::draw(){
 
 	uim.draw();
 
+	if (gameLost)
+	{
+		// draw you lost statement
+		ofSetColor(ofColor::black);
+		displayFont.drawString("YOU LOST! (happiness too low!)", ofGetWindowWidth()/2 - 200, ofGetWindowHeight()/2);
+		return;
+	}
+
 	// display game state
 	ofSetColor(ofColor::black);
 	displayFont.drawString("Gold: " + ofToString(gold), 10,30);
@@ -228,6 +243,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	if (gameLost) { return; }
 	switch (key) {
 	case OF_KEY_F1:
 		if (displayMenu == false) {
@@ -254,6 +270,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
+	if (gameLost) { return; }
 	// do raycasting to figure out which tile the mouse is selecting
 	IntersectionData id;
 	ofxIntersection is;
@@ -276,6 +293,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+	if (gameLost) { return; }
 	// if right click and a hoveredtile is known, try to place a building
 	if (button == 0 && hoveredTile != nullptr && hoveredTile->isOccupied())
 	{
