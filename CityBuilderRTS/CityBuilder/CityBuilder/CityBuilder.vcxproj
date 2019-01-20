@@ -86,6 +86,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\</OutDir>
     <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>bin\</OutDir>
@@ -99,41 +100,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
-..\..\..\addons\ofxDatGui\src;
-..\..\..\addons\ofxDatGui\src\components;
-..\..\..\addons\ofxDatGui\src\core;
-..\..\..\addons\ofxDatGui\src\libs;
-..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
-..\..\..\addons\ofxDatGui\src\themes;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxIntersection\src;C:\Users\tigan\Documents\ofxRTS\addons\ofxIntersection\src;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\src;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Dev\CityBuilderRTS\addons\ofxIntersection\src;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\src;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxIntersection\src;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxIntersection\src;
-C:\Users\tigan\Documents\ofxRTS\addons\ofxIntersection\src;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Dev\CityBuilderRTS\addons\ofxIntersection\src;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxIntersection\src</AdditionalIncludeDirectories>
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -142,7 +115,9 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -156,15 +131,13 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxIntersection\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -174,12 +147,12 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
       <AdditionalDependencies>%3b
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
 C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll%3b
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll%3b
 C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
 C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll%3b
 C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;%(AdditionalDependencies)</AdditionalDependencies>
+C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -189,41 +162,13 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
-..\..\..\addons\ofxDatGui\src;
-..\..\..\addons\ofxDatGui\src\components;
-..\..\..\addons\ofxDatGui\src\core;
-..\..\..\addons\ofxDatGui\src\libs;
-..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
-..\..\..\addons\ofxDatGui\src\themes;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxIntersection\src;C:\Users\tigan\Documents\ofxRTS\addons\ofxIntersection\src;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\src;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Dev\CityBuilderRTS\addons\ofxIntersection\src;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\src;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxIntersection\src;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxIntersection\src;
-C:\Users\tigan\Documents\ofxRTS\addons\ofxIntersection\src;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Dev\CityBuilderRTS\addons\ofxIntersection\src;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxIntersection\src</AdditionalIncludeDirectories>
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -234,12 +179,13 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib%3b
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -247,41 +193,13 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);
-..\..\..\addons\ofxDatGui\src;
-..\..\..\addons\ofxDatGui\src\components;
-..\..\..\addons\ofxDatGui\src\core;
-..\..\..\addons\ofxDatGui\src\libs;
-..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;
-..\..\..\addons\ofxDatGui\src\themes;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxDatGui\src;..\..\..\addons\ofxDatGui\src\components;..\..\..\addons\ofxDatGui\src\core;..\..\..\addons\ofxDatGui\src\libs;..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\addons\ofxDatGui\src\themes;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\src;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxIntersection\src;C:\Users\tigan\Documents\ofxRTS\addons\ofxIntersection\src;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\src;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Dev\CityBuilderRTS\addons\ofxIntersection\src;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\src;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxIntersection\src;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
 C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxIntersection\src;
-C:\Users\tigan\Documents\ofxRTS\addons\ofxIntersection\src;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Dev\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Dev\CityBuilderRTS\addons\ofxIntersection\src;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\src;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxIntersection\src</AdditionalIncludeDirectories>
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -293,9 +211,9 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib%3b
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
-C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib%3b%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.lib%3b
+C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp64.dll</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
