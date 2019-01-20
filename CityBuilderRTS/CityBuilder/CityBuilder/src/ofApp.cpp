@@ -207,8 +207,8 @@ void ofApp::draw(){
 	if (gameLost)
 	{
 		// draw you lost statement
-		ofSetColor(ofColor::black);
-		displayFont.drawString("YOU LOST! (happiness too low!)", ofGetWindowWidth()/2 - 200, ofGetWindowHeight()/2);
+		ofSetColor(ofColor::white);
+		displayFont.drawString("YOU LOST! (happiness too low!)", ofGetWindowWidth()/2 - 250, ofGetWindowHeight()/2);
 		return;
 	}
 
