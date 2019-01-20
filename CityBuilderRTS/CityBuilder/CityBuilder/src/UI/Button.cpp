@@ -10,7 +10,7 @@ void Button::draw()
 {
 	float w = ofGetWindowWidth();
 	float h = ofGetWindowHeight();
-	ofVec2f containerSize = ofVec2f(w, w / 4.92);
+	ofVec2f containerSize = ofVec2f(w, w / 4.74074074);
 	ofVec2f containerPosition = ofVec2f(0, ofGetWindowHeight() - containerSize.y);
 	image.draw(containerPosition.x + (containerSize.x * scaledPosition.x), containerPosition.y + (containerSize.y * scaledPosition.y),
 		imageScale * containerSize.x, imageScale * containerSize.x);
@@ -20,7 +20,7 @@ bool Button::clicked(float x, float y)
 {
 	float w = ofGetWindowWidth();
 	float h = ofGetWindowHeight();
-	ofVec2f containerSize = ofVec2f(w, w / 4.92);
+	ofVec2f containerSize = ofVec2f(w, w / 4.74074074);
 	ofVec2f containerPosition = ofVec2f(0, ofGetWindowHeight() - containerSize.y);
 	int x1, x2, y1, y2;
 	x1 = containerPosition.x + (containerSize.x * scaledPosition.x);

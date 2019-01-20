@@ -86,7 +86,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\</OutDir>
     <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
-    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>bin\</OutDir>
@@ -153,18 +152,11 @@ C:\Users\tigan\Documents\ofxRTS\addons\ofxIntersection\src</AdditionalIncludeDir
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <Link>
-      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%3b
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
-C:\Users\tigan\Documents\of_v0.10.1_vs2017_release\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll%3b
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.lib%3b
-C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp32.dll;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>

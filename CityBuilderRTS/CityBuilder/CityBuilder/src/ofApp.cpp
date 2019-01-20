@@ -121,6 +121,7 @@ void ofApp::keyPressed(int key){
 	if (key == ofKey::OF_KEY_ESC)
 	{
 		selectedBuildType = Structure::NONE;
+		uim.resetPreview();
 	}
 }
 
@@ -162,17 +163,19 @@ void ofApp::mousePressed(int x, int y, int button){
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
 			hoveredTile->placeStructure(Structure::APARTMENT);
 			buildSound.play();
+			uim.resetPreview();
 			selectedBuildType = Structure::NONE;
 			break;
 		case Structure::FACTORY :
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
 			hoveredTile->placeStructure(Structure::FACTORY);
 			buildSound.play();
+			uim.resetPreview();
 			selectedBuildType = Structure::NONE;
 			break;
 		}
 	}
-	if (y > ofGetWindowHeight() / 4.92 && button == 0)
+	if (y > ofGetWindowHeight() / 4.74074074 && button == 0)
 	{
 		uim.handleClick(x, y);
 	}
@@ -213,6 +216,7 @@ void ofApp::factoryClicked(void)
 	std::cout << "Factory selected!" << std::endl;
 	selectedBuildType = Structure::FACTORY;
 	tapSelectSound.play();
+	uim.setPreview(selectedBuildType);
 }
 
 
@@ -221,4 +225,5 @@ void ofApp::apartmentClicked(void)
 	std::cout << "Appartment selected!" << std::endl;
 	selectedBuildType = Structure::APARTMENT;
 	tapSelectSound.play();
+	uim.setPreview(selectedBuildType);
 }
