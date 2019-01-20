@@ -21,8 +21,8 @@ public:
 	void setPreview(Structure::StructureType _type);
 	void resetPreview();
 	void mapSet(int x, int y, Structure::StructureType _structureType, Tile::BaseType _baseType);
-	void setSelected(Structure::StructureType _type);
-	void setPPP(int * _people, int * _product, int maxPeople);
+	void setSelectedTile(shared_ptr<Tile> _tile);
+	void resetSelectedTile();
 
 private:
 	std::unordered_map<string, std::shared_ptr<Panel>> panels;
@@ -34,10 +34,9 @@ private:
 	std::unordered_map<shared_ptr<ofVec2f>, ofColor> myMap;
 	ofImage selectedPreview;
 	ofImage selectedInfo;
-	Structure::StructureType selected = Structure::NONE;
-	int* people;
-	int* product;
-	int maxPeople;
+	ofImage upgradeImage;
 	ofTrueTypeFont displayFont;
+
+	std::shared_ptr<Tile> selectedTile = nullptr;
 };
 

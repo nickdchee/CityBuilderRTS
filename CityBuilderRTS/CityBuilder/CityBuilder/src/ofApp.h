@@ -51,6 +51,7 @@ class ofApp : public ofBaseApp{
 		void apartmentClicked();
 		void farmClicked();
 		void officeClicked();
+		void upgradeClicked();
 
 		// current selected building type
 		Structure::StructureType selectedBuildType = Structure::NONE;

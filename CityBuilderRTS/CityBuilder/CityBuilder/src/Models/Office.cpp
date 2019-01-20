@@ -35,3 +35,14 @@ int Office::getMaxPeople()
 {
 	return maxPeople;
 }
+
+bool Office::isUpgradable()
+{
+	return upgradable;
+}
+
+void Office::upgrade()
+{
+	upgradable = false;
+	maxProduct += 4;
+}

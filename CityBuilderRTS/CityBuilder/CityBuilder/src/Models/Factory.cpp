@@ -36,3 +36,14 @@ int Factory::getMaxPeople()
 	return maxPeople;
 }
 
+bool Factory::isUpgradable()
+{
+	return upgradable;
+}
+
+void Factory::upgrade()
+{
+	upgradable = false;
+	maxProduct += 4;
+}
+

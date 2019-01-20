@@ -72,6 +72,7 @@ void ofApp::setup() {
 	std::function<void()> apartmentClickedE = [&] { apartmentClicked(); };
 	std::function<void()> farmClickedE = [&] { farmClicked(); };
 	std::function<void()> officeClickedE = [&] { officeClicked(); };
+	std::function<void()> upgradeClickedE = [&] { upgradeClicked(); };
 
 	// add the buttons and listeners
 	uim.addButton("factory", "leftPanel", "FactoryIcon.png", false);
@@ -82,6 +83,8 @@ void ofApp::setup() {
 	uim.addListener("farm", "leftPanel", farmClickedE);
 	uim.addButton("office", "leftPanel", "OfficeIcon.png", false);
 	uim.addListener("office", "leftPanel", officeClickedE);
+	uim.addButton("upgrade", "rightPanel", "UpgradeIcon.png", true);
+	uim.addListener("upgrade", "rightPanel", upgradeClickedE);
 }
 
 //--------------------------------------------------------------
@@ -239,7 +242,7 @@ void ofApp::keyPressed(int key){
 	{
 		selectedBuildType = Structure::NONE;
 		selectedStructureTile = nullptr;
-		uim.setSelected(Structure::NONE);
+		uim.resetSelectedTile();
 		uim.resetPreview();
 	}
 }
@@ -277,9 +280,7 @@ void ofApp::mousePressed(int x, int y, int button){
 	if (button == 0 && hoveredTile != nullptr && hoveredTile->isOccupied())
 	{
 		selectedStructureTile = hoveredTile;
-		uim.setSelected(selectedStructureTile->getStructure()->getType());
-		uim.setPPP(selectedStructureTile->getStructure()->getNumberOfPeopleP(), 
-			selectedStructureTile->getStructure()->getPPPP(), selectedStructureTile->getStructure()->getMaxPeople());
+		uim.setSelectedTile(selectedStructureTile);
 	}
 	else if (button == 2 && hoveredTile != nullptr)
 	{
@@ -398,7 +399,17 @@ void ofApp::officeClicked(void)
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
 	selectedStructureTile = nullptr;
-	uim.setSelected(Structure::NONE);
+	uim.resetSelectedTile();
+}
+
+void ofApp::upgradeClicked()
+{
+	if (selectedStructureTile == nullptr) { return;  }
+	if (gold >= 200 && selectedStructureTile->getStructure()->isUpgradable())
+	{
+		gold -= 200;
+		selectedStructureTile->getStructure()->upgrade();
+	}
 }
 
 void ofApp::farmClicked(void)
@@ -407,7 +418,7 @@ void ofApp::farmClicked(void)
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
 	selectedStructureTile = nullptr;
-	uim.setSelected(Structure::NONE);
+	uim.resetSelectedTile();
 }
 
 
@@ -417,7 +428,7 @@ void ofApp::factoryClicked(void)
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
 	selectedStructureTile = nullptr;
-	uim.setSelected(Structure::NONE);
+	uim.resetSelectedTile();
 }
 
 
@@ -427,7 +438,7 @@ void ofApp::apartmentClicked(void)
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
 	selectedStructureTile = nullptr;
-	uim.setSelected(Structure::NONE);
+	uim.resetSelectedTile();
 }
 
 void ofApp::updateResources()

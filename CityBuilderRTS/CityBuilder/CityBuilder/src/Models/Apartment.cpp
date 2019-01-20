@@ -32,6 +32,11 @@ int Apartment::getPPP()
 	return maxProduct;
 }
 
+bool Apartment::isUpgradable()
+{
+	return upgradable;
+}
+
 int Apartment::getMaxPeople()
 {
 	return maxPeople;

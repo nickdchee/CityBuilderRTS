@@ -6,6 +6,7 @@ UIManager::UIManager()
 {
 	mainUIBack.load("MainLayout.png");
 	displayFont.load("VCR_OSD_MONO_1.001.ttf", 12);
+	upgradeImage.load("UpgradeIcon.png");
 }
 
 
@@ -22,7 +23,22 @@ void UIManager::draw()
 	mainUIBack.draw(0, h - mainUIBack.getHeight());
 	for (auto panel : panels)
 	{
-		panel.second->draw();
+		if (panel.first == "rightPanel")
+		{
+			if (selectedTile != nullptr)
+			{
+				if (selectedTile->getStructure()->isUpgradable())
+				{
+
+					panel.second->draw();
+				}
+			}
+		}
+		else 
+		{
+			panel.second->draw();
+		}
+		
 	}
 	if (displayPreview)
 	{
@@ -37,7 +53,8 @@ void UIManager::draw()
 		ofSetColor(coord.second);
 		ofDrawRectangle(offsetV, offset * ofGetWindowWidth(), offset * ofGetWindowWidth());
 	}
-	if (selected != Structure::NONE)
+	if (selectedTile == nullptr) { return; }
+	if (selectedTile->getStructure()->getType() != Structure::NONE)
 	{
 		ofSetColor(255);
 		base = ofVec2f(0.625, 0.03703704);
@@ -45,7 +62,7 @@ void UIManager::draw()
 		float width = 0.09375 * w;
 		ofVec2f offsetV = ofVec2f(0, h - mainUIBack.getHeight()) + (base * ofVec2f(w, w / 4.74074074));
 		ofVec2f offsetV2 = ofVec2f(0, h - mainUIBack.getHeight()) + (base2 * ofVec2f(w, w / 4.74074074));
-		switch (selected)
+		switch (selectedTile->getStructure()->getType())
 		{
 		case Structure::FACTORY:
 			selectedPreview.load("FactoryIcon.png");
@@ -69,13 +86,14 @@ void UIManager::draw()
 		ofSetColor(ofColor::black);
 		base = ofVec2f(0, h - mainUIBack.getHeight()) + ofVec2f(0.6650625 * w, (38.0 / 54.0) * (w / 4.74074074));
 		std::vector<string> strings;
-		strings.push_back(ofToString(*people));
-		strings.push_back(ofToString(maxPeople));
+		strings.push_back(ofToString((selectedTile->getStructure()->getNumberOfPeople())));
+		strings.push_back(ofToString((selectedTile->getStructure()->getMaxPeople())));
 		displayFont.drawString(ofToString(ofJoinString(strings, "/")), base.x, base.y);
-		if (selected != Structure::APARTMENT)
+		if (selectedTile->getStructure()->getType() != Structure::APARTMENT)
 		{
 			base = ofVec2f(0, h - mainUIBack.getHeight()) + ofVec2f(0.6650625 * w, (48.0 / 54.0) * (w / 4.74074074));
-			displayFont.drawString(ofToString(*people * *product), base.x, base.y);
+			displayFont.drawString(ofToString(
+				(selectedTile->getStructure()->getNumberOfPeople() * selectedTile->getStructure()->getPPP())), base.x, base.y);
 		}
 	}
 	
@@ -177,14 +195,12 @@ void UIManager::mapSet(int x, int y, Structure::StructureType _structureType, Ti
 	myMap.insert({ shared_ptr<ofVec2f>(new ofVec2f(x,y)), c });
 }
 
-void UIManager::setSelected(Structure::StructureType _type)
+void UIManager::setSelectedTile(shared_ptr<Tile> _tile)
 {
-	selected = _type;
+	selectedTile = _tile;
 }
 
-void UIManager::setPPP(int * _people, int * _product, int _maxPeople)
+void UIManager::resetSelectedTile()
 {
-	people = _people;
-	product = _product;
-	maxPeople = _maxPeople;
+	selectedTile = nullptr;
 }

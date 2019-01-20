@@ -26,11 +26,6 @@ int Structure::getNumberOfPeople()
 	return people;
 }
 
-int * Structure::getNumberOfPeopleP()
-{
-	return &people;
-}
-
 void Structure::addResident()
 {
 	++people;
@@ -46,7 +41,6 @@ bool Structure::isEmpty()
 	return (people <= 0);
 }
 
-int * Structure::getPPPP()
+void Structure::upgrade()
 {
-	return &maxProduct;
 }
