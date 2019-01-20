@@ -4,6 +4,8 @@
 #include <memory>
 #include "ofxAssimpModelLoader.h"
 #include "ofxIntersection.h"
+#include "Apartment.h"
+#include "Factory.h"
 
 class Tile
 {
@@ -17,9 +19,14 @@ public:
 	~Tile() = default;
 
 	std::shared_ptr<ofxAssimpModelLoader> getBaseModel();
+	std::shared_ptr<IsFinitePlane> getBoundingPlane();
 
 
-	std::shared_ptr<IsFinitePlane> boundingPlane = nullptr; // bounding plane for collisions
+	void placeStructure(Structure::StructureType _type);
+	bool isOccupied();
+	Structure::StructureType getOccupyingType();
+	std::shared_ptr<Structure> getStructure();
+	BaseType getType();
 
 private:
 	ofVec3f position; // position of the tile
@@ -30,4 +37,6 @@ private:
 	// removed when a structure is built, added when a structure is destroyed
 	std::shared_ptr<ofxAssimpModelLoader> baseModel;
 	std::shared_ptr<Structure> structure = nullptr; // if this is nullptr, then it is not occupied
+	std::shared_ptr<IsFinitePlane> boundingPlane = nullptr; // bounding plane for collisions
+
 };

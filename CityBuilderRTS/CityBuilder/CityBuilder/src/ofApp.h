@@ -2,11 +2,14 @@
 
 #include "ofMain.h"
 
-// test 
+// test
 #include "ofxAssimpModelLoader.h"
 #include "Models/Tile.h"
 #include <vector>
 #include "ofxIntersection.h"
+#include "UI/UIManager.h"
+#include <functional>
+#include "Models/Structure.h"
 
 
 class ofApp : public ofBaseApp{
@@ -29,16 +32,43 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		// test stuff
+		ofLight light;
 		ofLight sunLight1;
 		ofLight sunLight2;
 		ofLight moonLight1;
 		ofLight moonLight2;
 		ofEasyCam cam;
-		std::vector<Tile> tiles;
-		ofImage mainUI;
 
+		// Shading Test
 		ofMaterial material;
 		ofColor yellowColor;
 		ofColor materialColor;
-		
+		ofShader shader;
+
+		// Material Display test
+		int gold;
+		int silver;
+		int bronze;
+		int lumber;
+		ofTrueTypeFont displayFont;
+
+		// Display menu test
+		bool displayMenu;
+
+		std::vector<std::shared_ptr<Tile>> tiles;
+		std::shared_ptr<Tile> hoveredTile = nullptr;
+		UIManager uim;
+
+		void factoryClicked();
+		void apartmentClicked();
+
+		Structure::StructureType selectedBuildType = Structure::NONE;
+
+		ofSoundPlayer introSound;
+		ofSoundPlayer backgroundMusic;
+		ofSoundPlayer demoSound;
+		ofSoundPlayer tapBlockedSound;
+		ofSoundPlayer tapSelectSound;
+		ofSoundPlayer buildSound;
+
 };

@@ -23,6 +23,13 @@
     <ClCompile Include="src\Models\Structure.cpp" />
     <ClCompile Include="src\UI\UIManager.cpp" />
     <ClCompile Include="src\UI\Button.cpp" />
+    <ClCompile Include="src\UI\UIManager.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
+    <ClCompile Include="src\UI\Panel.cpp" />
+    <ClCompile Include="src\UI\RightPanel.cpp" />
+    <ClCompile Include="src\UI\LeftPanel.cpp" />
+    <ClCompile Include="src\Models\Apartment.cpp" />
+    <ClCompile Include="src\Models\Factory.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
@@ -68,37 +75,37 @@
       <UniqueIdentifier>{2646318C-49AB-44C5-70D8-23E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader">
-      <UniqueIdentifier>{57922c9d-2d21-4ef8-a544-bee39fd8c478}</UniqueIdentifier>
+      <UniqueIdentifier>{001e0ffc-c12e-4ddb-b3fa-6df233667c59}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\src">
-      <UniqueIdentifier>{100d2e68-0697-4acd-ae0f-8e28e5f5aace}</UniqueIdentifier>
+      <UniqueIdentifier>{7d24ea3b-9f50-4349-8b84-31edd24761d3}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs">
-      <UniqueIdentifier>{a689fadb-47dc-45e8-aef3-fc48e4b33ed6}</UniqueIdentifier>
+      <UniqueIdentifier>{9ec55c2d-02a8-4420-acbd-08786c0b6e90}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp">
-      <UniqueIdentifier>{c9cec764-d7ec-4baa-b6db-c737f37169e0}</UniqueIdentifier>
+      <UniqueIdentifier>{b478063a-25fe-49f3-be70-6637796076a0}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include">
-      <UniqueIdentifier>{8ed093b5-4efc-4465-a685-833bd9ac89e2}</UniqueIdentifier>
+      <UniqueIdentifier>{05d051cc-e626-46f3-903a-628e7edfd286}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp">
-      <UniqueIdentifier>{d6b6ed1b-2034-44f5-b410-a11240090a62}</UniqueIdentifier>
+      <UniqueIdentifier>{afd04320-f581-46bd-ae25-241b8c0f40d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler">
-      <UniqueIdentifier>{ea765c3c-6313-4275-a1eb-7f5dfd9863d3}</UniqueIdentifier>
+      <UniqueIdentifier>{94028d3c-cbfb-49fa-860e-fee358920642}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port">
-      <UniqueIdentifier>{42cea28c-3938-4098-8566-5b1e72c7eeae}</UniqueIdentifier>
+      <UniqueIdentifier>{7a17516c-7885-4dfe-b674-de7ace7bf58f}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI">
-      <UniqueIdentifier>{1689e88e-eaf2-4008-b69f-4b74c6411100}</UniqueIdentifier>
+      <UniqueIdentifier>{7b9bb130-5e18-4837-9a35-a90ebd07dde9}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection">
-      <UniqueIdentifier>{f9fb93f8-9b60-48c2-9f11-01b03e7269c5}</UniqueIdentifier>
+      <UniqueIdentifier>{864a5acb-1604-4fa7-b168-7a0372670935}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection\src">
-      <UniqueIdentifier>{65d4bcf7-83a1-4899-a0fc-7def1c722a9e}</UniqueIdentifier>
+      <UniqueIdentifier>{c822f02b-4d39-43c8-9630-5803dddafd32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +183,14 @@
     <ClInclude Include="src\Models\Structure.h" />
     <ClInclude Include="src\UI\UIManager.h" />
     <ClInclude Include="src\UI\Button.h" />
+    <ClInclude Include="src\UI\UIManager.h" />
+    <ClInclude Include="src\UI\Button.h" />
+    <ClInclude Include="src\UI\Panel.h" />
+    <ClInclude Include="src\UI\UI.h" />
+    <ClInclude Include="src\UI\RightPanel.h" />
+    <ClInclude Include="src\UI\LeftPanel.h" />
+    <ClInclude Include="src\Models\Apartment.h" />
+    <ClInclude Include="src\Models\Factory.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClInclude>

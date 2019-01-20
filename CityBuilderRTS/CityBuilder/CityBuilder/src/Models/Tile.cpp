@@ -3,14 +3,7 @@
 Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size)
 {
 	boundingPlane = std::shared_ptr<IsFinitePlane>(new IsFinitePlane());
-	//boundingPlane->set(
-	//	position, 
-	//	ofPoint(position.x, position.y, position.z + size), 
-	//	ofPoint(position.x + size, position.y, position.z + size),
-	//	ofPoint(position.x + size, position.y, position.z)
-	//);
-	boundingPlane->set(pos, size);
-
+	boundingPlane->set(position + 1, size);
 
 	baseModel = std::shared_ptr<ofxAssimpModelLoader>(new ofxAssimpModelLoader());
 	switch (type)
@@ -30,4 +23,42 @@ Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), 
 std::shared_ptr<ofxAssimpModelLoader> Tile::getBaseModel()
 {
 	return baseModel;
+}
+
+std::shared_ptr<IsFinitePlane> Tile::getBoundingPlane()
+{
+	return boundingPlane;
+}
+
+void Tile::placeStructure(Structure::StructureType _type)
+{
+	switch (_type)
+	{
+	case Structure::APARTMENT :
+		structure = std::shared_ptr<Structure>(new Apartment(position));
+		break;
+	case Structure::FACTORY:
+		structure = std::shared_ptr<Structure>(new Factory(position));
+		break;
+	}
+}
+
+bool Tile::isOccupied()
+{
+	return (structure != nullptr);
+}
+
+Structure::StructureType Tile::getOccupyingType()
+{
+	return structure->getType();
+}
+
+std::shared_ptr<Structure> Tile::getStructure()
+{
+	return structure;
+}
+
+Tile::BaseType Tile::getType()
+{
+	return type;
 }
