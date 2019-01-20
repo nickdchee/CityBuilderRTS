@@ -8,7 +8,7 @@ class Button
 public:
 	Button(string _buttonName, string _imageName, ofVec2f _scaledPosition, ofVec2f _imageSize, float _imageScale);
 	~Button() = default;
-	
+
 	void draw();
 	bool clicked(float x, float y);
 	void addListener(std::function<void()>);
@@ -23,4 +23,3 @@ private:
 	std::vector<std::function<void()>> listeners;
 
 };
-

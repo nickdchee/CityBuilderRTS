@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-// test 
+// test
 #include "ofxAssimpModelLoader.h"
 #include "Models/Tile.h"
 #include <vector>
@@ -32,8 +32,28 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		// test stuff
-		ofLight	light;
+		ofLight light;
+		ofLight sunLight1;
+		ofLight sunLight2;
+		ofLight moonLight1;
+		ofLight moonLight2;
 		ofEasyCam cam;
+
+		// Shading Test
+		ofMaterial material;
+		ofColor yellowColor;
+		ofColor materialColor;
+		ofShader shader;
+
+		// Material Display test
+		int silver;
+		int bronze;
+		int lumber;
+		ofTrueTypeFont displayFont;
+
+		// Display menu test
+		bool displayMenu;
+
 		std::vector<std::shared_ptr<Tile>> tiles;
 		std::shared_ptr<Tile> hoveredTile = nullptr;
 		UIManager uim;

@@ -33,6 +33,22 @@ void ofApp::setup() {
 	light.setAmbientColor(ofColor::lightGray);
 	light.setDiffuseColor(ofColor::yellow);
 	light.setSpecularColor(ofColor::white);
+
+	ofSetSmoothLighting(true);
+
+	sunLight1.setPosition(0, -10000, 17500);
+	sunLight1.setPointLight();
+	sunLight1.setDiffuseColor(ofColor(255.f, 254.f, 224.f));
+	sunLight1.setSpecularColor(ofColor(255.f, 254.f, 224.f));
+	sunLight1.setAttenuation(1.0);
+
+	material.setShininess(30);
+	yellowColor.setBrightness(180.f);
+	yellowColor.setSaturation(150.f);
+	materialColor.setBrightness(250.f);
+	materialColor.setSaturation(200.f);
+	sunLight1.setAmbientColor(ofColor::black);
+
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
@@ -40,7 +56,7 @@ void ofApp::setup() {
 	cam.disableDoubleClick();
 	cam.enableOrtho();
 	cam.setMouseScrollSensitivity(20.0f);
-	cam.setScale(0.3, 0.3, 0.3);
+	cam.setScale(0.3,0.3,0.3);
 	cam.setCamYUpperBound(-1);
 	cam.setCamYLowerBound(-1);
 	cam.setPosition(0, 400, 0);
@@ -63,11 +79,20 @@ void ofApp::setup() {
 		}
 	}
 
+	// display materials testing
+	gold = 0;
+	silver = 0;
+	bronze = 0;
+	lumber = 0;
+	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
+
+	// display menu testing
+
+	displayMenu = false;
 	std::function<void()> factoryClickedE = [&] { factoryClicked(); };
 	std::function<void()> apartmentClickedE = [&] { apartmentClicked(); };
 	std::function<void()> farmClickedE = [&] { farmClicked(); };
 	std::function<void()> officeClickedE = [&] { officeClicked(); };
-
 
 	uim.addButton("factory", "leftPanel", "FactoryIcon.png", false);
 	uim.addListener("factory", "leftPanel", factoryClickedE);
@@ -102,8 +127,10 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofEnableDepthTest();
-	cam.begin();	
-	light.enable();
+	cam.begin();
+	sunLight1.enable();
+	material.begin();
+
 
 	for (auto tile : tiles)
 	{
@@ -115,9 +142,9 @@ void ofApp::draw(){
 		else {
 			tile->getBaseModel()->drawFaces();
 		}
-		
+
 	}
-	
+
 	if (hoveredTile != nullptr)
 	{
 		if (selectedBuildType != Structure::NONE)
@@ -134,21 +161,50 @@ void ofApp::draw(){
 		{
 			ofSetColor(52, 209, 226);
 		}
-		
+
 		hoveredTile->getBoundingPlane()->draw();
 	}
 
-	ofDisableDepthTest();
+	material.end();
+	sunLight1.disable();
 	cam.end();
-	light.disable();
-	
+	ofDisableDepthTest();
 	ofDisableLighting();
 
 	uim.draw();
+
+	// testing material display
+	ofSetColor(ofColor::black);
+	displayFont.drawString("Gold: " + ofToString(gold), 10,30);
+	displayFont.drawString("Silver: " + ofToString(silver), 10, 30 + displayFont.getAscenderHeight());
+	displayFont.drawString("Bronze: " + ofToString(bronze), 10, 30 + 2* displayFont.getAscenderHeight());
+	displayFont.drawString("Lumber: " + ofToString(lumber), 10, 30 + 3 * displayFont.getAscenderHeight());
+
+
+	// testing menu display
+	if (displayMenu) {
+		ofSetColor(ofColor::black);
+		displayFont.drawString("Menu displayed!!", ofGetWindowWidth() - 230, displayFont.getAscenderHeight());
+	}
+	else {
+		ofSetColor(ofColor::black);
+		displayFont.drawString("'f1' for menu.", ofGetWindowWidth() - 230	, displayFont.getAscenderHeight()+5);
+	}
+
+
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	switch (key) {
+	case OF_KEY_F1:
+		if (displayMenu == false) {
+			displayMenu = true;
+		}
+		else {
+			displayMenu = false;
+		}
+	}
 	if (key == ofKey::OF_KEY_ESC)
 	{
 		selectedBuildType = Structure::NONE;
@@ -255,7 +311,7 @@ void ofApp::gotMessage(ofMessage msg){
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
