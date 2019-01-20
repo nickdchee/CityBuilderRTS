@@ -2,6 +2,7 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
 
+	ofSetWindowTitle("CloudCity");
 	// MUSIC SETUP
 	ofSoundSetVolume(0.5);
 	introSound.load("bx_launch_game.mp3");
