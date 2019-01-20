@@ -19,6 +19,17 @@
     <ClCompile Include="src\CommandPattern\Command.cpp" />
     <ClCompile Include="src\CommandPattern\CommandManager.cpp" />
     <ClCompile Include="src\CommandPattern\UndoableCommand.cpp" />
+    <ClCompile Include="src\Models\Tile.cpp" />
+    <ClCompile Include="src\Models\Structure.cpp" />
+    <ClCompile Include="src\UI\UIManager.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
+    <ClCompile Include="src\UI\UIManager.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
+    <ClCompile Include="src\UI\Panel.cpp" />
+    <ClCompile Include="src\UI\RightPanel.cpp" />
+    <ClCompile Include="src\UI\LeftPanel.cpp" />
+    <ClCompile Include="src\Models\Apartment.cpp" />
+    <ClCompile Include="src\Models\Factory.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
@@ -31,18 +42,9 @@
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Models\Tile.cpp" />
-    <ClCompile Include="src\Models\Structure.cpp" />
     <ClCompile Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.cpp">
       <Filter>addons\ofxIntersection\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\UIManager.cpp" />
-    <ClCompile Include="src\UI\Button.cpp" />
-    <ClCompile Include="src\UI\Panel.cpp" />
-    <ClCompile Include="src\UI\RightPanel.cpp" />
-    <ClCompile Include="src\UI\LeftPanel.cpp" />
-    <ClCompile Include="src\Models\Apartment.cpp" />
-    <ClCompile Include="src\Models\Factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -73,37 +75,37 @@
       <UniqueIdentifier>{2646318C-49AB-44C5-70D8-23E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader">
-      <UniqueIdentifier>{7761d976-c571-4a07-9a57-4296c7b4a680}</UniqueIdentifier>
+      <UniqueIdentifier>{001e0ffc-c12e-4ddb-b3fa-6df233667c59}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\src">
-      <UniqueIdentifier>{1a1a7415-5934-42b2-84bd-8921650071b8}</UniqueIdentifier>
+      <UniqueIdentifier>{7d24ea3b-9f50-4349-8b84-31edd24761d3}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs">
-      <UniqueIdentifier>{5e50b50b-6d48-4772-a668-074405adcca6}</UniqueIdentifier>
+      <UniqueIdentifier>{9ec55c2d-02a8-4420-acbd-08786c0b6e90}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp">
-      <UniqueIdentifier>{b7459a9e-1ce0-4aef-b0c0-2f3e7d45f215}</UniqueIdentifier>
+      <UniqueIdentifier>{b478063a-25fe-49f3-be70-6637796076a0}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include">
-      <UniqueIdentifier>{8e33e27a-e8a7-442b-9ccb-dfdc16eb105d}</UniqueIdentifier>
+      <UniqueIdentifier>{05d051cc-e626-46f3-903a-628e7edfd286}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp">
-      <UniqueIdentifier>{d218f054-ee3d-41f4-bc86-4f441c551ebe}</UniqueIdentifier>
+      <UniqueIdentifier>{afd04320-f581-46bd-ae25-241b8c0f40d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler">
-      <UniqueIdentifier>{f7e65d19-ca03-4ce9-adeb-94760202dfce}</UniqueIdentifier>
+      <UniqueIdentifier>{94028d3c-cbfb-49fa-860e-fee358920642}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port">
-      <UniqueIdentifier>{92c462f4-8aeb-4f95-a584-ff3ff7779442}</UniqueIdentifier>
+      <UniqueIdentifier>{7a17516c-7885-4dfe-b674-de7ace7bf58f}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI">
-      <UniqueIdentifier>{ed65445f-a5bc-4348-ae94-9bbe0602228c}</UniqueIdentifier>
+      <UniqueIdentifier>{7b9bb130-5e18-4837-9a35-a90ebd07dde9}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection">
-      <UniqueIdentifier>{da54d356-a792-48e5-a6e2-5651ce06eba5}</UniqueIdentifier>
+      <UniqueIdentifier>{864a5acb-1604-4fa7-b168-7a0372670935}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxIntersection\src">
-      <UniqueIdentifier>{61a757b7-9038-4e3d-bcf1-d68a3fb582a8}</UniqueIdentifier>
+      <UniqueIdentifier>{c822f02b-4d39-43c8-9630-5803dddafd32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,18 @@
     <ClInclude Include="src\CommandPattern\CommandManager.h" />
     <ClInclude Include="src\CommandPattern\UndoableCommand.h" />
     <ClInclude Include="src\ObserverPattern\Observer.h" />
+    <ClInclude Include="src\Models\Tile.h" />
+    <ClInclude Include="src\Models\Structure.h" />
+    <ClInclude Include="src\UI\UIManager.h" />
+    <ClInclude Include="src\UI\Button.h" />
+    <ClInclude Include="src\UI\UIManager.h" />
+    <ClInclude Include="src\UI\Button.h" />
+    <ClInclude Include="src\UI\Panel.h" />
+    <ClInclude Include="src\UI\UI.h" />
+    <ClInclude Include="src\UI\RightPanel.h" />
+    <ClInclude Include="src\UI\LeftPanel.h" />
+    <ClInclude Include="src\Models\Apartment.h" />
+    <ClInclude Include="src\Models\Factory.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClInclude>
@@ -315,19 +329,9 @@
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h">
       <Filter>addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI</Filter>
     </ClInclude>
-    <ClInclude Include="src\Models\Tile.h" />
-    <ClInclude Include="src\Models\Structure.h" />
     <ClInclude Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.h">
       <Filter>addons\ofxIntersection\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\UIManager.h" />
-    <ClInclude Include="src\UI\Button.h" />
-    <ClInclude Include="src\UI\Panel.h" />
-    <ClInclude Include="src\UI\UI.h" />
-    <ClInclude Include="src\UI\RightPanel.h" />
-    <ClInclude Include="src\UI\LeftPanel.h" />
-    <ClInclude Include="src\Models\Apartment.h" />
-    <ClInclude Include="src\Models\Factory.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

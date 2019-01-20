@@ -32,6 +32,47 @@ void ofApp::setup() {
 	light.setAmbientColor(ofColor::lightGray);
 	light.setDiffuseColor(ofColor::yellow);
 	light.setSpecularColor(ofColor::white);
+
+	ofSetSmoothLighting(true);
+
+	sunLight1.setPosition(0, 20000, 5000);
+	sunLight1.setPointLight();
+	sunLight1.setDiffuseColor(ofColor(255.f, 254.f, 224.f));
+	sunLight1.setSpecularColor(ofColor(255.f, 254.f, 224.f));
+	sunLight1.setAttenuation(1.0);
+
+	material.setShininess(30);
+	yellowColor.setBrightness(180.f);
+	yellowColor.setSaturation(150.f);
+	materialColor.setBrightness(250.f);
+	materialColor.setSaturation(200.f);
+	sunLight1.setAmbientColor(ofColor::yellowGreen);
+
+	sunLight2.setPosition(0, -200000, 5000);
+	sunLight2.setPointLight();
+	sunLight2.setAttenuation(0.9);
+	sunLight2.setAmbientColor(ofColor::yellowGreen);
+
+	moonLight1.setPosition(20000, 0, 5000);
+	moonLight1.setPointLight();
+	sunLight1.setDiffuseColor(ofColor(128.f, 128.f, 128.f));
+	sunLight1.setSpecularColor(ofColor(128.f, 128.f, 128.f));
+	moonLight1.setAttenuation(1.0);
+
+	moonLight2.setPosition(-20000, 0, 5000);
+	moonLight2.setPointLight();
+	//moonLight2.setAttenuation(0.5);
+	moonLight2.setAmbientColor(ofColor::blue);
+
+	//moonLight.setDirectional();
+	//moonLight.lookAt(ofVec3f(0, 0, 0));
+	//moonLight.setAmbientColor(ofColor(128));
+	//moonLight.setOrientation(ofVec3f(0, 0, 0));
+
+
+	//sunLight.rotateDeg(90, sunLight.getXAxis());
+	//moonLight.rotateDeg(90, moonLight.getXAxis());
+
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
@@ -39,7 +80,7 @@ void ofApp::setup() {
 	cam.disableDoubleClick();
 	cam.enableOrtho();
 	cam.setMouseScrollSensitivity(20.0f);
-	cam.setScale(0.3, 0.3, 0.3);
+	cam.setScale(0.3,0.3,0.3);
 	cam.setCamYUpperBound(-1);
 	cam.setCamYLowerBound(-1);
 	cam.setPosition(0, 400, 0);
@@ -62,9 +103,18 @@ void ofApp::setup() {
 		}
 	}
 
+	// display materials testing
+	gold = 0;
+	silver = 0;
+	bronze = 0;
+	lumber = 0;
+	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
+
+	// display menu testing
+
+	displayMenu = false;
 	std::function<void()> factoryClickedE = [&] { factoryClicked(); };
 	std::function<void()> apartmentClickedE = [&] { apartmentClicked(); };
-
 
 	uim.addButton("factory", "leftPanel", "FactoryIcon.png", false);
 	uim.addListener("factory", "leftPanel", factoryClickedE);
@@ -74,13 +124,33 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	sunLight1.rotateAroundDeg(0.1, sunLight1.getXAxis(), ofVec3f(0, 0, 0));
+	sunLight2.rotateAroundDeg(0.1, sunLight2.getXAxis(), ofVec3f(0, 0, 0));
+
+	moonLight1.rotateAroundDeg(0.1, moonLight1.getXAxis(), ofVec3f(0, 0, 0));
+	moonLight2.rotateAroundDeg(0.1, moonLight2.getXAxis(), ofVec3f(0, 0, 0));
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofEnableDepthTest();
-	cam.begin();	
-	light.enable();
+	cam.begin();
+	sunLight1.enable();
+	material.begin();
+	//sunLight2.enable();
+	//moonLight1.enable();
+	//moonLight2.enable();
+	/*
+	if (sunLight1.getY() < 0)
+	{
+		moonLight.disable();
+	}
+
+	else {
+		sunLight.disable();
+	}
+	*/
+
 
 	for (auto tile : tiles)
 	{
@@ -92,9 +162,9 @@ void ofApp::draw(){
 		else {
 			tile->getBaseModel()->drawFaces();
 		}
-		
+
 	}
-	
+
 	if (hoveredTile != nullptr)
 	{
 		if (selectedBuildType != Structure::NONE)
@@ -111,21 +181,53 @@ void ofApp::draw(){
 		{
 			ofSetColor(52, 209, 226);
 		}
-		
+
 		hoveredTile->getBoundingPlane()->draw();
 	}
 
-	ofDisableDepthTest();
+	material.end();
+	sunLight1.disable();
+	//sunLight2.disable();
+	//moonLight1.disable();
+	//moonLight2.disable();
 	cam.end();
-	light.disable();
-	
+	ofDisableDepthTest();
 	ofDisableLighting();
 
 	uim.draw();
+
+	// testing material display
+	ofSetColor(ofColor::black);
+	displayFont.drawString("Gold: " + ofToString(gold), 10,30);
+	displayFont.drawString("Silver: " + ofToString(silver), 10, 30 + displayFont.getAscenderHeight());
+	displayFont.drawString("Bronze: " + ofToString(bronze), 10, 30 + 2* displayFont.getAscenderHeight());
+	displayFont.drawString("Lumber: " + ofToString(lumber), 10, 30 + 3 * displayFont.getAscenderHeight());
+
+
+	// testing menu display
+	if (displayMenu) {
+		ofSetColor(ofColor::black);
+		displayFont.drawString("Menu displayed!!", ofGetWindowWidth() - 230, displayFont.getAscenderHeight());
+	}
+	else {
+		ofSetColor(ofColor::black);
+		displayFont.drawString("'f1' for menu.", ofGetWindowWidth() - 230	, displayFont.getAscenderHeight()+5);
+	}
+
+
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	switch (key) {
+	case OF_KEY_F1:
+		if (displayMenu == false) {
+			displayMenu = true;
+		}
+		else {
+			displayMenu = false;
+		}
+	}
 	if (key == ofKey::OF_KEY_ESC)
 	{
 		selectedBuildType = Structure::NONE;
@@ -214,7 +316,7 @@ void ofApp::gotMessage(ofMessage msg){
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
