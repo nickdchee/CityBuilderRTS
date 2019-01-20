@@ -46,9 +46,6 @@ class ofApp : public ofBaseApp{
 		ofShader shader;
 
 		// Material Display test
-		int silver;
-		int bronze;
-		int lumber;
 		ofTrueTypeFont displayFont;
 
 		// Display menu test
@@ -85,8 +82,8 @@ class ofApp : public ofBaseApp{
 		int jobless = 0;
 
 		int happiness = 100;
-		int gold = 0;
-		int buildingMaterial = 0;
+		int gold = 500;
+		int buildingMaterial = 500;
 		int foodInflow = 0;
 		
 };

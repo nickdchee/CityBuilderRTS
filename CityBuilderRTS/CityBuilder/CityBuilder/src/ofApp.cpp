@@ -79,11 +79,6 @@ void ofApp::setup() {
 		}
 	}
 
-	// display materials testing
-	gold = 0;
-	silver = 0;
-	bronze = 0;
-	lumber = 0;
 	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
 
 	// display menu testing
@@ -109,13 +104,6 @@ void ofApp::update(){
 	if (ofGetFrameNum() % 900 == 0) // every 15 seconds at 60fps
 	{
 		addResidents(10);
-		std::cout << "residents: " << residents << std::endl;
-		std::cout << "homeless: " << homeless << std::endl;
-		std::cout << "jobless: " << jobless << std::endl << std::endl;
-		std::cout << "gold: " << gold << std::endl;
-		std::cout << "building material: " << buildingMaterial << std::endl;
-		std::cout << "food inflow: " << foodInflow << std::endl;
-		std::cout << "happiness: " << happiness << std::endl << std::endl;
 	}
 	if (ofGetFrameNum() % 1800 == 0) // every 30 seconds at 60fps
 	{
@@ -135,13 +123,7 @@ void ofApp::draw(){
 	for (auto tile : tiles)
 	{
 		ofSetColor(150);
-		if (tile->isOccupied())
-		{
-			tile->getStructure()->getModel()->drawFaces();
-		}
-		else {
-			tile->getBaseModel()->drawFaces();
-		}
+		tile->draw();
 
 	}
 
@@ -154,7 +136,46 @@ void ofApp::draw(){
 				ofSetColor(224, 67, 56);
 			}
 			else {
-				ofSetColor(36, 193, 64);
+				switch (selectedBuildType)
+				{
+				case Structure::APARTMENT :
+					if (gold >= Apartment::goldCost && buildingMaterial >= Apartment::buildingMaterialCost)
+					{
+						ofSetColor(36, 193, 64);
+					}
+					else {
+						ofSetColor(224, 67, 56);
+					}
+					break;
+					break;
+				case Structure::FACTORY :
+					if (gold >= Factory::goldCost && buildingMaterial >= Factory::buildingMaterialCost)
+					{
+						ofSetColor(36, 193, 64);
+					}
+					else {
+						ofSetColor(224, 67, 56);
+					}
+					break;
+				case Structure::FARM :
+					if (gold >= Farm::goldCost && buildingMaterial >= Farm::buildingMaterialCost)
+					{
+						ofSetColor(36, 193, 64);
+					}
+					else {
+						ofSetColor(224, 67, 56);
+					}
+					break;
+				case Structure::OFFICE :
+					if (gold >= Office::goldCost && buildingMaterial >= Office::buildingMaterialCost)
+					{
+						ofSetColor(36, 193, 64);
+					}
+					else {
+						ofSetColor(224, 67, 56);
+					}
+					break;
+				}
 			}
 		}
 		else
@@ -176,19 +197,30 @@ void ofApp::draw(){
 	// testing material display
 	ofSetColor(ofColor::black);
 	displayFont.drawString("Gold: " + ofToString(gold), 10,30);
-	displayFont.drawString("Silver: " + ofToString(silver), 10, 30 + displayFont.getAscenderHeight());
-	displayFont.drawString("Bronze: " + ofToString(bronze), 10, 30 + 2* displayFont.getAscenderHeight());
-	displayFont.drawString("Lumber: " + ofToString(lumber), 10, 30 + 3 * displayFont.getAscenderHeight());
+	displayFont.drawString("Building Material: " + ofToString(buildingMaterial), 10, 30 + displayFont.getAscenderHeight());
+	displayFont.drawString("Food Inflow: " + ofToString(foodInflow), 10, 30 + 2* displayFont.getAscenderHeight());
+	displayFont.drawString("Happiness: " + ofToString(happiness), 10, 30 + 3 * displayFont.getAscenderHeight());
+	displayFont.drawString("Residents: " + ofToString(residents), 10, 30 + 4 * displayFont.getAscenderHeight());
+	displayFont.drawString("Homeless: " + ofToString(homeless), 10, 30 + 5 * displayFont.getAscenderHeight());
+	displayFont.drawString("Jobless: " + ofToString(jobless), 10, 30 + 6 * displayFont.getAscenderHeight());
 
 
 	// testing menu display
 	if (displayMenu) {
 		ofSetColor(ofColor::black);
-		displayFont.drawString("Menu displayed!!", ofGetWindowWidth() - 230, displayFont.getAscenderHeight());
+		displayFont.load("VCR_OSD_MONO_1.001.ttf", 10);
+		displayFont.drawString("F1 to close this menu", ofGetWindowWidth() - 200, displayFont.getAscenderHeight());
+		displayFont.drawString("ESC to cancel building", ofGetWindowWidth() - 200, 2 * displayFont.getAscenderHeight());
+		displayFont.drawString("Right click to place", ofGetWindowWidth() - 200, 3 * displayFont.getAscenderHeight());
+		displayFont.drawString("Left click on UI/pan", ofGetWindowWidth() - 200, 4 * displayFont.getAscenderHeight());
+		displayFont.drawString("Scroll to zoom", ofGetWindowWidth() - 200, 5 * displayFont.getAscenderHeight());
+		displayFont.drawString("GOAL: manage population", ofGetWindowWidth() - 200, 6 * displayFont.getAscenderHeight());
+		displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
+
 	}
 	else {
 		ofSetColor(ofColor::black);
-		displayFont.drawString("'f1' for menu.", ofGetWindowWidth() - 230	, displayFont.getAscenderHeight()+5);
+		displayFont.drawString("'F1' for help.", ofGetWindowWidth() - 230	, displayFont.getAscenderHeight()+5);
 	}
 
 
@@ -248,35 +280,63 @@ void ofApp::mousePressed(int x, int y, int button){
 			break;
 		case Structure::APARTMENT :
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
-			hoveredTile->placeStructure(Structure::APARTMENT);
-			buildSound.play();
-			placeResidents();
-			uim.resetPreview();
-			selectedBuildType = Structure::NONE;
+			if (gold >= Apartment::goldCost && buildingMaterial >= Apartment::buildingMaterialCost)
+			{
+				hoveredTile->placeStructure(Structure::APARTMENT);
+				buildSound.play();
+				placeResidents();
+				uim.resetPreview();
+				selectedBuildType = Structure::NONE;
+				gold -= Apartment::goldCost; buildingMaterial -= Apartment::buildingMaterialCost;
+			}
+			else {
+				tapBlockedSound.play();
+			}
 			break;
 		case Structure::FACTORY :
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
-			hoveredTile->placeStructure(Structure::FACTORY);
-			buildSound.play();
-			placeResidents();
-			uim.resetPreview();
-			selectedBuildType = Structure::NONE;
+			if (gold >= Factory::goldCost && buildingMaterial >= Factory::buildingMaterialCost)
+			{
+				hoveredTile->placeStructure(Structure::FACTORY);
+				buildSound.play();
+				placeResidents();
+				uim.resetPreview();
+				selectedBuildType = Structure::NONE;
+				gold -= Factory::goldCost; buildingMaterial -= Factory::buildingMaterialCost;
+			}
+			else {
+				tapBlockedSound.play();
+			}
 			break;
 		case Structure::FARM:
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
-			hoveredTile->placeStructure(Structure::FARM);
-			buildSound.play();
-			placeResidents();
-			uim.resetPreview();
-			selectedBuildType = Structure::NONE;
+			if (gold >= Farm::goldCost && buildingMaterial >= Farm::buildingMaterialCost)
+			{
+				hoveredTile->placeStructure(Structure::FARM);
+				buildSound.play();
+				placeResidents();
+				uim.resetPreview();
+				selectedBuildType = Structure::NONE;
+				gold -= Farm::goldCost; buildingMaterial -= Farm::buildingMaterialCost;
+			}
+			else {
+				tapBlockedSound.play();
+			}
 			break;
 		case Structure::OFFICE:
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
-			hoveredTile->placeStructure(Structure::OFFICE);
-			buildSound.play();
-			placeResidents();
-			uim.resetPreview();
-			selectedBuildType = Structure::NONE;
+			if (gold >= Office::goldCost && buildingMaterial >= Office::buildingMaterialCost)
+			{
+				hoveredTile->placeStructure(Structure::OFFICE);
+				buildSound.play();
+				placeResidents();
+				uim.resetPreview();
+				selectedBuildType = Structure::NONE;
+				gold -= Office::goldCost; buildingMaterial -= Office::buildingMaterialCost;
+			}
+			else {
+				tapBlockedSound.play();
+			}
 			break;
 		}
 	}

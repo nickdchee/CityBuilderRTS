@@ -30,6 +30,9 @@ public:
 	std::shared_ptr<Structure> getStructure();
 	BaseType getType();
 
+	void draw();
+
+
 private:
 	ofVec3f position; // position of the tile
 	float size; // size/width of the tile (n x n)
@@ -40,5 +43,8 @@ private:
 	std::shared_ptr<ofxAssimpModelLoader> baseModel;
 	std::shared_ptr<Structure> structure = nullptr; // if this is nullptr, then it is not occupied
 	std::shared_ptr<IsFinitePlane> boundingPlane = nullptr; // bounding plane for collisions
+	ofxAssimpModelLoader constructionModel;
 
+	int timer = 0;
+	bool inConstruction = false;
 };

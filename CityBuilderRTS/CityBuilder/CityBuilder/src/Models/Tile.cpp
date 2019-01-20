@@ -18,6 +18,12 @@ Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), 
 	baseModel->setScaleNormalization(false);
 	baseModel->setRotation(0, 180, 1, 0, 0);
 	baseModel->setPosition(position.x, position.y, position.z);
+
+
+	constructionModel.loadModel("ConstructionTile.fbx");
+	constructionModel.setScaleNormalization(false);
+	constructionModel.setRotation(0, 180, 1, 0, 0);
+	constructionModel.setPosition(position.x, position.y, position.z);
 }
 
 std::shared_ptr<ofxAssimpModelLoader> Tile::getBaseModel()
@@ -47,6 +53,8 @@ void Tile::placeStructure(Structure::StructureType _type)
 		structure = std::shared_ptr<Structure>(new Office(position));
 		break;
 	}
+	timer = 4 * 60; // 4 seconds roughly
+	inConstruction = true;
 }
 
 bool Tile::isOccupied()
@@ -67,4 +75,24 @@ std::shared_ptr<Structure> Tile::getStructure()
 Tile::BaseType Tile::getType()
 {
 	return type;
+}
+
+
+void Tile::draw()
+{
+	if (isOccupied())
+	{
+		if (inConstruction)
+		{
+			--timer;
+			constructionModel.drawFaces();
+		}
+		else {
+			structure->getModel()->drawFaces();
+		}
+		if (timer <= 0) { inConstruction = false; }
+	}
+	else {
+		baseModel->drawFaces();
+	}
 }
