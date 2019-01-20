@@ -201,6 +201,8 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp" />
     <ClCompile Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.cpp" />
+    <ClCompile Include="src\UI\LeftPanel.cpp" />
+    <ClCompile Include="src\UI\Panel.cpp" />
     <ClCompile Include="src\UI\Button.cpp" />
     <ClCompile Include="src\CommandPattern\Command.cpp" />
     <ClCompile Include="src\CommandPattern\CommandManager.cpp" />
@@ -212,6 +214,7 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp" />
     <ClCompile Include="src\Models\Tile.cpp" />
     <ClCompile Include="src\Models\Structure.cpp" />
+    <ClCompile Include="src\UI\RightPanel.cpp" />
     <ClCompile Include="src\UI\UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +265,8 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.h" />
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxIntersection\src\ofxIntersection.h" />
+    <ClInclude Include="src\UI\LeftPanel.h" />
+    <ClInclude Include="src\UI\Panel.h" />
     <ClInclude Include="src\UI\Button.h" />
     <ClInclude Include="src\CommandPattern\Command.h" />
     <ClInclude Include="src\CommandPattern\CommandManager.h" />
@@ -291,7 +296,9 @@ C:\Users\Daniil\Documents\GitHub\CityBuilderRTS\addons\ofxAssimpModelLoader\libs
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
     <ClInclude Include="src\Models\Tile.h" />
     <ClInclude Include="src\Models\Structure.h" />
+    <ClInclude Include="src\UI\RightPanel.h" />
     <ClInclude Include="src\UI\UIManager.h" />
+    <ClInclude Include="src\UI\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

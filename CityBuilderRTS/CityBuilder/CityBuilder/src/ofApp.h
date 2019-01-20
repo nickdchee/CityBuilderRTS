@@ -7,6 +7,8 @@
 #include "Models/Tile.h"
 #include <vector>
 #include "ofxIntersection.h"
+#include "UI/UIManager.h"
+#include <functional>
 
 
 class ofApp : public ofBaseApp{
@@ -33,5 +35,9 @@ class ofApp : public ofBaseApp{
 		ofEasyCam cam;
 		std::vector<Tile> tiles;
 		ofImage mainUI;
+		UIManager uim;
+
+		void button1();
+		void button2();
 		
 };

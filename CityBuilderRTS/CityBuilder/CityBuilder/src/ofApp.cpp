@@ -1,5 +1,4 @@
 #include "ofApp.h"
-
 //--------------------------------------------------------------
 void ofApp::setup() {
 
@@ -35,6 +34,31 @@ void ofApp::setup() {
 			tiles.push_back(Tile(ofVec3f(i1 * size, 0, i2 * size), (Tile::BaseType)r, size));
 		}
 	}
+
+	std::function<void()> testButton1 = [&] { button1(); };
+	std::function<void()> testButton2 = [&] { button2(); };
+	std::function<void()> testButton3 = [&] { button1(); };
+	std::function<void()> testButton4 = [&] { button2(); };
+
+
+	
+	uim.addButton("factory1", "rightPanel", "FactoryIcon.png", true);
+	uim.addListener("factory1", "rightPanel", testButton1);
+	uim.addButton("factory2", "rightPanel", "FactoryIcon.png", true);
+	uim.addListener("factory2", "rightPanel", testButton2);
+	uim.addButton("factory3", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory4", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory5", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory6", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory7", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory8", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory9", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory10", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory11", "rightPanel", "FactoryIcon.png", true);
+	uim.addButton("factory12", "rightPanel", "FactoryIcon.png", true);
+
+	uim.addButton("factory13", "leftPanel", "FactoryIcon.png", false);
+	uim.addListener("factory13", "leftPanel", testButton3);
 }
 
 //--------------------------------------------------------------
@@ -68,11 +92,9 @@ void ofApp::draw(){
 	cam.end();
 	light.disable();
 	ofDisableDepthTest();
+	ofDisableLighting();
 
-	ofSetColor(255);
-	mainUI.draw(0,ofGetWindowHeight()-mainUI.getHeight());
-
-
+	uim.draw();
 }
 
 //--------------------------------------------------------------
@@ -97,7 +119,9 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+	uim.handleClick(x, y);
+	//std::cout << "x ratio: " << (float)((float)x / (float)ofGetWindowWidth()) << std::endl;
+	//std::cout << "y ratio: " << (float)((float)y / (float)ofGetWindowHeight()) << std::endl;
 }
 
 //--------------------------------------------------------------
@@ -117,7 +141,6 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-	mainUI.resize(w, w/4.92);
 }
 
 //--------------------------------------------------------------
@@ -128,4 +151,16 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+
+void ofApp::button1(void)
+{
+	std::cout << "button 1!" << std::endl;
+}
+
+
+void ofApp::button2(void)
+{
+	std::cout << "button 2!" << std::endl;
 }

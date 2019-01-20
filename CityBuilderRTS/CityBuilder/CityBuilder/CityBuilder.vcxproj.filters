@@ -38,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="src\UI\UIManager.cpp" />
     <ClCompile Include="src\UI\Button.cpp" />
+    <ClCompile Include="src\UI\Panel.cpp" />
+    <ClCompile Include="src\UI\RightPanel.cpp" />
+    <ClCompile Include="src\UI\LeftPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -317,6 +320,10 @@
     </ClInclude>
     <ClInclude Include="src\UI\UIManager.h" />
     <ClInclude Include="src\UI\Button.h" />
+    <ClInclude Include="src\UI\Panel.h" />
+    <ClInclude Include="src\UI\UI.h" />
+    <ClInclude Include="src\UI\RightPanel.h" />
+    <ClInclude Include="src\UI\LeftPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
