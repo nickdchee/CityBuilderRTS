@@ -48,7 +48,9 @@ class ofApp : public ofBaseApp{
 		int silver;
 		int bronze;
 		int lumber;
-
 		ofTrueTypeFont displayFont;
+
+		// Display menu test
+		bool displayMenu;
 
 };

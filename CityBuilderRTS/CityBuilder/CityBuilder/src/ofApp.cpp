@@ -74,13 +74,15 @@ void ofApp::setup() {
 		}
 	}
 
-	// materials testing
+	// display materials testing
 	gold = 0;
 	silver = 0;
 	bronze = 0;
 	lumber = 0;
+	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
 
-	displayFont.load("arial.ttf", 20);
+	// display menu testing
+	displayMenu = false;
 	
 }
 
@@ -150,11 +152,32 @@ void ofApp::draw(){
 	displayFont.drawString("Silver: " + ofToString(silver), 10, 30 + displayFont.getAscenderHeight());
 	displayFont.drawString("Bronze: " + ofToString(bronze), 10, 30 + 2* displayFont.getAscenderHeight());
 	displayFont.drawString("Lumber: " + ofToString(lumber), 10, 30 + 3 * displayFont.getAscenderHeight());
+
+
+	// testing menu display
+	if (displayMenu) {
+		ofSetColor(ofColor::black);
+		displayFont.drawString("Menu displayed!!", ofGetWindowWidth() - 230, displayFont.getAscenderHeight());
+	}
+	else {
+		ofSetColor(ofColor::black);
+		displayFont.drawString("'f1' for menu.", ofGetWindowWidth() - 230	, displayFont.getAscenderHeight()+5);
+	}
+
 	
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	switch (key) {
+	case OF_KEY_F1:
+		if (displayMenu == false) {
+			displayMenu = true;
+		}
+		else {
+			displayMenu = false;
+		}
+	}
 
 }
 
