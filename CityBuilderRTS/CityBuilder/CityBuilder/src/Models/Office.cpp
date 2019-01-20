@@ -1,33 +1,32 @@
-#include "Factory.h"
+#include "Office.h"
 
 
-Factory::Factory(ofVec3f _pos)
+Office::Office(ofVec3f _pos)
 {
-	type = Structure::FACTORY;
+	type = Structure::OFFICE;
 	model = std::shared_ptr<ofxAssimpModelLoader>(new ofxAssimpModelLoader());
-	model->loadModel("Factory.fbx");
+	model->loadModel("OfficeTile.fbx");
 	model->setScaleNormalization(false);
 	model->setRotation(0, 180, 1, 0, 0);
 	model->setPosition(_pos.x, _pos.y, _pos.z);
 }
 
 
-Factory::~Factory()
+Office::~Office()
 {
 }
 
-bool Factory::isFull()
+bool Office::isFull()
 {
 	return (people >= 20);
 }
 
-Structure::StructureType Factory::getType()
+Structure::StructureType Office::getType()
 {
 	return type;
 }
 
-int Factory::getPPP()
+int Office::getPPP()
 {
 	return maxProduct;
 }
-

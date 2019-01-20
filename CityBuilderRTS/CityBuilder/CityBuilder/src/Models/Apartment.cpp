@@ -16,3 +16,18 @@ Apartment::Apartment(ofVec3f _pos)
 Apartment::~Apartment()
 {
 }
+
+bool Apartment::isFull()
+{
+	return (people >= 200);
+}
+
+Structure::StructureType Apartment::getType()
+{
+	return type;
+}
+
+int Apartment::getPPP()
+{
+	return maxProduct;
+}

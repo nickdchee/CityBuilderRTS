@@ -40,6 +40,8 @@ class ofApp : public ofBaseApp{
 
 		void factoryClicked();
 		void apartmentClicked();
+		void farmClicked();
+		void officeClicked();
 
 		Structure::StructureType selectedBuildType = Structure::NONE;
 
@@ -49,5 +51,22 @@ class ofApp : public ofBaseApp{
 		ofSoundPlayer tapBlockedSound;
 		ofSoundPlayer tapSelectSound;
 		ofSoundPlayer buildSound;
+
+
+		void updateResources();
+
+		void addResidents(int _num);
+		void placeResidents();
+		void updateHappiness();
+
+
+		int residents = 0;
+		int homeless = 0;
+		int jobless = 0;
+
+		int happiness = 100;
+		int gold = 0;
+		int buildingMaterial = 0;
+		int foodInflow = 0;
 		
 };

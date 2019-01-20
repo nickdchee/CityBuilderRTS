@@ -14,6 +14,7 @@ void ofApp::setup() {
 	tapBlockedSound.setMultiPlay(true);
 	tapSelectSound.load("bx_Tap_select.mp3");
 	tapSelectSound.setMultiPlay(true);
+	tapSelectSound.setVolume(1.0);
 	buildSound.load("bx_Build_Building.mp3");
 	buildSound.setMultiPlay(true);
 
@@ -64,16 +65,38 @@ void ofApp::setup() {
 
 	std::function<void()> factoryClickedE = [&] { factoryClicked(); };
 	std::function<void()> apartmentClickedE = [&] { apartmentClicked(); };
+	std::function<void()> farmClickedE = [&] { farmClicked(); };
+	std::function<void()> officeClickedE = [&] { officeClicked(); };
 
 
 	uim.addButton("factory", "leftPanel", "FactoryIcon.png", false);
 	uim.addListener("factory", "leftPanel", factoryClickedE);
 	uim.addButton("apartment", "leftPanel", "ApartmentIcon.png", false);
 	uim.addListener("apartment", "leftPanel", apartmentClickedE);
+	uim.addButton("farm", "leftPanel", "FarmIcon.png", false);
+	uim.addListener("farm", "leftPanel", farmClickedE);
+	uim.addButton("office", "leftPanel", "OfficeIcon.png", false);
+	uim.addListener("office", "leftPanel", officeClickedE);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if (ofGetFrameNum() % 900 == 0) // every 15 seconds at 60fps
+	{
+		addResidents(10);
+		std::cout << "residents: " << residents << std::endl;
+		std::cout << "homeless: " << homeless << std::endl;
+		std::cout << "jobless: " << jobless << std::endl << std::endl;
+		std::cout << "gold: " << gold << std::endl;
+		std::cout << "building material: " << buildingMaterial << std::endl;
+		std::cout << "food inflow: " << foodInflow << std::endl;
+		std::cout << "happiness: " << happiness << std::endl << std::endl;
+	}
+	if (ofGetFrameNum() % 1800 == 0) // every 30 seconds at 60fps
+	{
+		updateHappiness();
+		updateResources();
+	}
 }
 
 //--------------------------------------------------------------
@@ -101,10 +124,10 @@ void ofApp::draw(){
 		{
 			if (hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())
 			{
-				ofSetColor(140, 27, 23);
+				ofSetColor(224, 67, 56);
 			}
 			else {
-				ofSetColor(20, 94, 33);
+				ofSetColor(36, 193, 64);
 			}
 		}
 		else
@@ -171,6 +194,7 @@ void ofApp::mousePressed(int x, int y, int button){
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
 			hoveredTile->placeStructure(Structure::APARTMENT);
 			buildSound.play();
+			placeResidents();
 			uim.resetPreview();
 			selectedBuildType = Structure::NONE;
 			break;
@@ -178,6 +202,23 @@ void ofApp::mousePressed(int x, int y, int button){
 			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
 			hoveredTile->placeStructure(Structure::FACTORY);
 			buildSound.play();
+			placeResidents();
+			uim.resetPreview();
+			selectedBuildType = Structure::NONE;
+			break;
+		case Structure::FARM:
+			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
+			hoveredTile->placeStructure(Structure::FARM);
+			buildSound.play();
+			placeResidents();
+			uim.resetPreview();
+			selectedBuildType = Structure::NONE;
+			break;
+		case Structure::OFFICE:
+			if ((hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())) { tapBlockedSound.play(); break; }
+			hoveredTile->placeStructure(Structure::OFFICE);
+			buildSound.play();
+			placeResidents();
 			uim.resetPreview();
 			selectedBuildType = Structure::NONE;
 			break;
@@ -218,10 +259,23 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+void ofApp::officeClicked(void)
+{
+	selectedBuildType = Structure::OFFICE;
+	tapSelectSound.play();
+	uim.setPreview(selectedBuildType);
+}
+
+void ofApp::farmClicked(void)
+{
+	selectedBuildType = Structure::FARM;
+	tapSelectSound.play();
+	uim.setPreview(selectedBuildType);
+}
+
 
 void ofApp::factoryClicked(void)
 {
-	std::cout << "Factory selected!" << std::endl;
 	selectedBuildType = Structure::FACTORY;
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
@@ -230,8 +284,191 @@ void ofApp::factoryClicked(void)
 
 void ofApp::apartmentClicked(void)
 {
-	std::cout << "Appartment selected!" << std::endl;
 	selectedBuildType = Structure::APARTMENT;
 	tapSelectSound.play();
 	uim.setPreview(selectedBuildType);
+}
+
+void ofApp::updateResources()
+{
+	int food = 0;
+	for (auto tile : tiles)
+	{
+		auto structure = tile->getStructure();
+		if (structure == nullptr) { continue; }
+		switch (structure->getType())
+		{
+		case Structure::OFFICE :
+			gold += structure->getPPP() * structure->getNumberOfPeople();
+		case Structure::FARM :
+			food += structure->getPPP() * structure->getNumberOfPeople();
+			break;
+		case Structure::FACTORY :
+			buildingMaterial += structure->getPPP() * structure->getNumberOfPeople();
+			break;
+		case Structure::APARTMENT :
+			// no effect
+			break;
+		}
+	}
+	foodInflow = food;
+}
+
+void ofApp::addResidents(int _num)
+{
+	int to_place = _num;
+	residents += to_place;
+	vector<shared_ptr<Tile>> residential_buildings;
+	vector<shared_ptr<Tile>> producing_buildings;
+	for (auto tile : tiles)
+	{
+		if (tile->getStructure() == nullptr) { continue; }
+		switch (tile->getStructure()->getType())
+		{
+		case Structure::FACTORY :
+			if (!tile->getStructure()->isFull())
+			{
+				producing_buildings.push_back(tile);
+			}
+			break;
+		case Structure::APARTMENT:
+			if (!tile->getStructure()->isFull())
+			{
+				residential_buildings.push_back(tile);
+			}
+			break;
+		case Structure::FARM :
+			if (!tile->getStructure()->isFull())
+			{
+				producing_buildings.push_back(tile);
+			}
+			break;
+		case Structure::OFFICE:
+			if (!tile->getStructure()->isFull())
+			{
+				producing_buildings.push_back(tile);
+			}
+			break;
+		}
+	}
+
+	while (to_place > 0)
+	{
+		if (residential_buildings.size() == 0)
+		{
+			homeless += to_place;
+			break;
+		}
+		int r = rand() % residential_buildings.size();
+		residential_buildings[r]->getStructure()->addResident();
+		--to_place;
+		if (residential_buildings[r]->getStructure()->isFull())
+		{
+			residential_buildings.erase(residential_buildings.begin() + r);
+		}
+	}
+
+	to_place = _num;
+	while (to_place > 0)
+	{
+		if (producing_buildings.size() == 0)
+		{
+			jobless += to_place;
+			break;
+		}
+		int r = rand() % producing_buildings.size();
+		producing_buildings[r]->getStructure()->addResident();
+		--to_place;
+		if (producing_buildings[r]->getStructure()->isFull())
+		{
+			producing_buildings.erase(producing_buildings.begin() + r);
+		}
+	}
+}
+
+void ofApp::placeResidents()
+{
+	vector<shared_ptr<Tile>> residential_buildings;
+	vector<shared_ptr<Tile>> producing_buildings;
+	for (auto tile : tiles)
+	{
+		if (tile->getStructure() == nullptr) { continue; }
+		switch (tile->getStructure()->getType())
+		{
+		case Structure::FACTORY :
+			if (!tile->getStructure()->isFull())
+			{
+				producing_buildings.push_back(tile);
+			}
+			break;
+		case Structure::APARTMENT:
+			if (!tile->getStructure()->isFull())
+			{
+				residential_buildings.push_back(tile);
+			}
+			break;
+		case Structure::FARM :
+			if (!tile->getStructure()->isFull())
+			{
+				producing_buildings.push_back(tile);
+			}
+			break;
+		case Structure::OFFICE:
+			if (!tile->getStructure()->isFull())
+			{
+				producing_buildings.push_back(tile);
+			}
+			break;
+		}
+	}
+
+	while (homeless > 0)
+	{
+		if (residential_buildings.size() == 0)
+		{
+			break;
+		}
+		int r = rand() % residential_buildings.size();
+		residential_buildings[r]->getStructure()->addResident();
+		--homeless;
+		if (residential_buildings[r]->getStructure()->isFull())
+		{
+			residential_buildings.erase(residential_buildings.begin() + r);
+		}
+	}
+
+	while (jobless > 0)
+	{
+		if (producing_buildings.size() == 0)
+		{
+			break;
+		}
+		int r = rand() % producing_buildings.size();
+		producing_buildings[r]->getStructure()->addResident();
+		--jobless;
+		if (producing_buildings[r]->getStructure()->isFull())
+		{
+			producing_buildings.erase(producing_buildings.begin() + r);
+		}
+	}
+
+}
+
+void ofApp::updateHappiness()
+{
+	int negative = (homeless * -0.5) + (jobless * -0.25);
+	if (foodInflow < residents)
+	{
+		negative += (residents - foodInflow) * -0.5;
+	}
+	if (negative == 0) // if no homeless or jobless or food issues
+	{
+		happiness += 5;
+	}
+	else 
+	{
+		happiness += negative;
+	}
+	if (happiness > 100) { happiness = 100; }
+	if (happiness < 0) { happiness = 0; }
 }

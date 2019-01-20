@@ -6,6 +6,8 @@
 #include "ofxIntersection.h"
 #include "Apartment.h"
 #include "Factory.h"
+#include "Farm.h"
+#include "Office.h"
 
 class Tile
 {

@@ -1,33 +1,32 @@
-#include "Factory.h"
+#include "Farm.h"
 
 
-Factory::Factory(ofVec3f _pos)
+Farm::Farm(ofVec3f _pos)
 {
-	type = Structure::FACTORY;
+	type = Structure::FARM;
 	model = std::shared_ptr<ofxAssimpModelLoader>(new ofxAssimpModelLoader());
-	model->loadModel("Factory.fbx");
+	model->loadModel("Farm.fbx");
 	model->setScaleNormalization(false);
 	model->setRotation(0, 180, 1, 0, 0);
 	model->setPosition(_pos.x, _pos.y, _pos.z);
 }
 
 
-Factory::~Factory()
+Farm::~Farm()
 {
 }
 
-bool Factory::isFull()
+bool Farm::isFull()
 {
 	return (people >= 20);
 }
 
-Structure::StructureType Factory::getType()
+Structure::StructureType Farm::getType()
 {
 	return type;
 }
 
-int Factory::getPPP()
+int Farm::getPPP()
 {
 	return maxProduct;
 }
-

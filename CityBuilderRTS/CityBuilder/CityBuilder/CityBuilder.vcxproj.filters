@@ -43,6 +43,8 @@
     <ClCompile Include="src\UI\LeftPanel.cpp" />
     <ClCompile Include="src\Models\Apartment.cpp" />
     <ClCompile Include="src\Models\Factory.cpp" />
+    <ClCompile Include="src\Models\Farm.cpp" />
+    <ClCompile Include="src\Models\Office.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -328,6 +330,8 @@
     <ClInclude Include="src\UI\LeftPanel.h" />
     <ClInclude Include="src\Models\Apartment.h" />
     <ClInclude Include="src\Models\Factory.h" />
+    <ClInclude Include="src\Models\Farm.h" />
+    <ClInclude Include="src\Models\Office.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -75,6 +75,12 @@ void UIManager::setPreview(Structure::StructureType _type)
 	case Structure::APARTMENT :
 		preview.load("ApartmentIcon.png");
 		break;
+	case Structure::FARM :
+		preview.load("FarmIcon.png");
+		break;
+	case Structure::OFFICE:
+		preview.load("OfficeIcon.png");
+		break;
 	}
 }
 

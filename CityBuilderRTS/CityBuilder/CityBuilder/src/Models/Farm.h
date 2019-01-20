@@ -2,17 +2,17 @@
 #include "Structure.h"
 #include <memory>
 
-class Factory : public Structure
+class Farm : public Structure
 {
 public:
-	Factory(ofVec3f _pos);
-	~Factory();
+	Farm(ofVec3f _pos);
+	~Farm();
 	bool isFull() override;
 	StructureType getType() override;
 	int getPPP() override;
 
 private:
 	int maxPeople = 20;
-	int maxProduct = 2;
+	int maxProduct = 5;
 };
 

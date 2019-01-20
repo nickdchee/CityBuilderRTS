@@ -40,6 +40,12 @@ void Tile::placeStructure(Structure::StructureType _type)
 	case Structure::FACTORY:
 		structure = std::shared_ptr<Structure>(new Factory(position));
 		break;
+	case Structure::FARM:
+		structure = std::shared_ptr<Structure>(new Farm(position));
+		break;
+	case Structure::OFFICE:
+		structure = std::shared_ptr<Structure>(new Office(position));
+		break;
 	}
 }
 
