@@ -37,8 +37,18 @@ class ofApp : public ofBaseApp{
 		std::vector<Tile> tiles;
 		ofImage mainUI;
 
+		// Shading Test
 		ofMaterial material;
 		ofColor yellowColor;
 		ofColor materialColor;
-		
+		ofShader shader;
+
+		// Material Display test
+		int gold;
+		int silver;
+		int bronze;
+		int lumber;
+
+		ofTrueTypeFont displayFont;
+
 };

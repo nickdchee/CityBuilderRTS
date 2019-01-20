@@ -8,8 +8,6 @@ void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetSmoothLighting(true);
 
-	
-
 	sunLight1.setPosition(0, 20000, 5000);
 	sunLight1.setPointLight();
 	sunLight1.setDiffuseColor(ofColor(255.f, 254.f, 224.f));
@@ -48,7 +46,6 @@ void ofApp::setup() {
 	//sunLight.rotateDeg(90, sunLight.getXAxis());
 	//moonLight.rotateDeg(90, moonLight.getXAxis());
 
-
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
@@ -76,6 +73,15 @@ void ofApp::setup() {
 			tiles.push_back(Tile(ofVec3f(i1 * size, 0, i2 * size), (Tile::BaseType)r, size));
 		}
 	}
+
+	// materials testing
+	gold = 0;
+	silver = 0;
+	bronze = 0;
+	lumber = 0;
+
+	displayFont.load("arial.ttf", 20);
+	
 }
 
 //--------------------------------------------------------------
@@ -94,7 +100,6 @@ void ofApp::draw(){
 	IsRay ray;
 	ofPoint mouse(ofGetMouseX(), ofGetMouseY());
 	ray.set(cam.screenToWorld(mouse), cam.getZAxis());
-
 
 	ofEnableDepthTest();
 	cam.begin();
@@ -138,6 +143,13 @@ void ofApp::draw(){
 
 	ofSetColor(ofColor::white);
 	mainUI.draw(0, ofGetWindowHeight() - mainUI.getHeight());
+
+	// testing material display
+	ofSetColor(ofColor::black);
+	displayFont.drawString("Gold: " + ofToString(gold), 10,30);
+	displayFont.drawString("Silver: " + ofToString(silver), 10, 30 + displayFont.getAscenderHeight());
+	displayFont.drawString("Bronze: " + ofToString(bronze), 10, 30 + 2* displayFont.getAscenderHeight());
+	displayFont.drawString("Lumber: " + ofToString(lumber), 10, 30 + 3 * displayFont.getAscenderHeight());
 	
 }
 
