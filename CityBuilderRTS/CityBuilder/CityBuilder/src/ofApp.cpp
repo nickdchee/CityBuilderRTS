@@ -10,7 +10,7 @@ void ofApp::setup() {
 
 	
 
-	sunLight1.setPosition(0, 20000, 5000);
+	sunLight1.setPosition(0, -10000, 17500);
 	sunLight1.setPointLight();
 	sunLight1.setDiffuseColor(ofColor(255.f, 254.f, 224.f));
 	sunLight1.setSpecularColor(ofColor(255.f, 254.f, 224.f));
@@ -21,32 +21,7 @@ void ofApp::setup() {
 	yellowColor.setSaturation(150.f);
 	materialColor.setBrightness(250.f);
 	materialColor.setSaturation(200.f);
-	sunLight1.setAmbientColor(ofColor::yellowGreen);
-
-	sunLight2.setPosition(0, -200000, 5000);
-	sunLight2.setPointLight();
-	sunLight2.setAttenuation(0.9);
-	sunLight2.setAmbientColor(ofColor::yellowGreen);
-
-	moonLight1.setPosition(20000, 0, 5000);
-	moonLight1.setPointLight();
-	sunLight1.setDiffuseColor(ofColor(128.f, 128.f, 128.f));
-	sunLight1.setSpecularColor(ofColor(128.f, 128.f, 128.f));
-	moonLight1.setAttenuation(1.0);
-
-	moonLight2.setPosition(-20000, 0, 5000);
-	moonLight2.setPointLight();
-	//moonLight2.setAttenuation(0.5);
-	moonLight2.setAmbientColor(ofColor::blue);
-
-	//moonLight.setDirectional();
-	//moonLight.lookAt(ofVec3f(0, 0, 0));
-	//moonLight.setAmbientColor(ofColor(128));
-	//moonLight.setOrientation(ofVec3f(0, 0, 0));
-
-	
-	//sunLight.rotateDeg(90, sunLight.getXAxis());
-	//moonLight.rotateDeg(90, moonLight.getXAxis());
+	sunLight1.setAmbientColor(ofColor::black);
 
 
 	cam.rotate(45, cam.getYAxis());
@@ -80,11 +55,6 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	sunLight1.rotateAroundDeg(0.1, sunLight1.getXAxis(), ofVec3f(0, 0, 0));
-	sunLight2.rotateAroundDeg(0.1, sunLight2.getXAxis(), ofVec3f(0, 0, 0));
-
-	moonLight1.rotateAroundDeg(0.1, moonLight1.getXAxis(), ofVec3f(0, 0, 0));
-	moonLight2.rotateAroundDeg(0.1, moonLight2.getXAxis(), ofVec3f(0, 0, 0));
 }
 
 //--------------------------------------------------------------
@@ -100,24 +70,11 @@ void ofApp::draw(){
 	cam.begin();
 	sunLight1.enable();
 	material.begin();
-	//sunLight2.enable();
-	//moonLight1.enable();
-	//moonLight2.enable();
-	/*
-	if (sunLight1.getY() < 0)
-	{
-		moonLight.disable();
-	}
-
-	else {
-		sunLight.disable();
-	}
-	*/
 
 
 	for (auto tile : tiles)
 	{
-		ofSetColor(sunLight1.getDiffuseColor());
+		ofSetColor(155);
 		tile.getBaseModel()->drawFaces();
 		auto t = tile.boundingPlane;
 		id = is.RayFinitePlaneIntersection(ray, *t);
@@ -129,9 +86,6 @@ void ofApp::draw(){
 
 	material.end();
 	sunLight1.disable();
-	//sunLight2.disable();
-	//moonLight1.disable();
-	//moonLight2.disable();
 	cam.end();
 	ofDisableDepthTest();
 	ofDisableLighting();
