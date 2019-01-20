@@ -87,8 +87,8 @@ void ofApp::setup() {
 	displayFont.load("VCR_OSD_MONO_1.001.ttf", 20);
 
 	// display menu testing
-
 	displayMenu = false;
+
 	std::function<void()> factoryClickedE = [&] { factoryClicked(); };
 	std::function<void()> apartmentClickedE = [&] { apartmentClicked(); };
 	std::function<void()> farmClickedE = [&] { farmClicked(); };
@@ -122,6 +122,7 @@ void ofApp::update(){
 		updateHappiness();
 		updateResources();
 	}
+
 }
 
 //--------------------------------------------------------------
@@ -190,7 +191,6 @@ void ofApp::draw(){
 		ofSetColor(ofColor::black);
 		displayFont.drawString("'f1' for menu.", ofGetWindowWidth() - 230	, displayFont.getAscenderHeight()+5);
 	}
-
 
 }
 

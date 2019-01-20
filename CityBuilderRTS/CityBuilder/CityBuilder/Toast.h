@@ -6,10 +6,11 @@ using namespace std;
 class Toast
 {
 public:
-	Toast(string message);
+	Toast(string message, int windowHeight);
 	~Toast();
 
 	//Toast test
+	int height;
 	bool toastActive;
 	string msg;
 	time_t start;

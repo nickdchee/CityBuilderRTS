@@ -324,6 +324,7 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
     <ClCompile Include="src\Models\Structure.cpp" />
     <ClCompile Include="src\UI\RightPanel.cpp" />
     <ClCompile Include="src\UI\UIManager.cpp" />
+    <ClCompile Include="Toast.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ai_assert.h" />
@@ -411,6 +412,7 @@ C:\Users\JoeHe\Documents\of_v0.10.1_vs2017_release\apps\CityBuilderRTS\addons\of
     <ClInclude Include="src\UI\RightPanel.h" />
     <ClInclude Include="src\UI\UIManager.h" />
     <ClInclude Include="src\UI\UI.h" />
+    <ClInclude Include="Toast.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
