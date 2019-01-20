@@ -28,7 +28,10 @@ void ofApp::setup() {
 	// test
 	ofBackground(255, 255, 255);
 	ofSetVerticalSync(true);
-	light.setPosition(0, 100, 500);
+	light.setPosition(0, 200, 300);
+	light.setAmbientColor(ofColor::lightGray);
+	light.setDiffuseColor(ofColor::yellow);
+	light.setSpecularColor(ofColor::white);
 	cam.rotate(45, cam.getYAxis());
 	cam.rotate(-35, cam.getXAxis());
 	cam.removeAllInteractions();
@@ -44,6 +47,8 @@ void ofApp::setup() {
 
 	cam.setVFlip(false);
 	ofEnableAlphaBlending();
+	ofEnableSmoothing();
+	//ofEnableAntiAliasing();
 
 
 	// tile stuff
@@ -89,28 +94,31 @@ void ofApp::draw(){
 		}
 		
 	}
+	
 	if (hoveredTile != nullptr)
 	{
 		if (selectedBuildType != Structure::NONE)
 		{
 			if (hoveredTile->getType() == Tile::MOUNTAIN || hoveredTile->isOccupied())
 			{
-				ofSetColor(255, 0, 0);
+				ofSetColor(140, 27, 23);
 			}
 			else {
-				ofSetColor(0, 255, 0);
+				ofSetColor(20, 94, 33);
 			}
 		}
 		else
 		{
-			ofSetColor(0, 0, 255);
+			ofSetColor(52, 209, 226);
 		}
+		
 		hoveredTile->getBoundingPlane()->draw();
 	}
 
+	ofDisableDepthTest();
 	cam.end();
 	light.disable();
-	ofDisableDepthTest();
+	
 	ofDisableLighting();
 
 	uim.draw();

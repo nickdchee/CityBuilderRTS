@@ -3,8 +3,7 @@
 Tile::Tile(ofVec3f pos, BaseType type, float size) : position(pos), type(type), size(size)
 {
 	boundingPlane = std::shared_ptr<IsFinitePlane>(new IsFinitePlane());
-	position.y += 5;
-	boundingPlane->set(position, size);
+	boundingPlane->set(position + 1, size);
 
 	baseModel = std::shared_ptr<ofxAssimpModelLoader>(new ofxAssimpModelLoader());
 	switch (type)
