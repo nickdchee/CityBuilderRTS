@@ -1,6 +1,9 @@
 # CloudCity
 A small game almost entirely from scratch about population management and city building using openFrameworks written during HackED 2019.
 
+![](https://github.com/nickdchee/CityBuilderRTS/blob/master/readmeImages/ScreenCap1.PNG)
+![](https://github.com/nickdchee/CityBuilderRTS/blob/master/readmeImages/ScreenCap2.PNG)
+
 The following was copied from the devpost submission @ https://devpost.com/software/cloudcity.
 
 ### Inspiration
